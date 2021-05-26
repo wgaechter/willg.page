@@ -1,3 +1,5 @@
+{% load static %}
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -12,15 +14,15 @@
             });
         });
     </script> 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <title>Portfolio practice</title>
     <div id="header">
         <h1>William Gaechter</h1>
         <p>will.gaechter@gmail.com</p>
         <div id="socialBar">
-            <a id="socialIcons" href="https://github.com/wgaechter" target="_blank"><img class="social" src="static/img/github.png"></a>
-            <a id="socialIcons" href="https://www.linkedin.com/in/williamgaechter/" target="_blank"><img class="social" src="static/img/linkedin.png"></a>
-            <a id="socialIcons" href="https://twitter.com/willgaechter" target="_blank"><img class="social" src="static/img/twitter.png"></a>
+            <a id="socialIcons" href="https://github.com/wgaechter" target="_blank"><img class="social" src="{% static 'img/github.png' %}"></a>
+            <a id="socialIcons" href="https://www.linkedin.com/in/williamgaechter/" target="_blank"><img class="social" src="{% static 'img/linkedin.png' %}"></a>
+            <a id="socialIcons" href="https://twitter.com/willgaechter" target="_blank"><img class="social" src="{% static 'img/twitter.png' %}"></a>
         </div>
     </div>
     <div class="link-list" id='linkList'>
