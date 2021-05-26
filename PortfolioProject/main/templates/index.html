@@ -1,1 +1,81 @@
-<h1>hellow world</h1>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var q = { duration: 2000 }
+        $(document).ready(function() {
+            $("#header").delay(1000).fadeIn(1000, function() { 
+                $("#linkList li").each(function(i) {
+                    $(this).delay(100 * i).fadeIn(2000, function() {
+                        $("div#About").fadeIn("slow");
+                    });
+                });
+            });
+        });
+    </script> 
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Portfolio practice</title>
+    <div id="header">
+        <h1>William Gaechter</h1>
+        <p>will.gaechter@gmail.com</p>
+        <div id="socialBar">
+            <a id="socialIcons" href="https://github.com/wgaechter" target="_blank"><img class="social" src="static/img/github.png"></a>
+            <a id="socialIcons" href="https://www.linkedin.com/in/williamgaechter/" target="_blank"><img class="social" src="static/img/linkedin.png"></a>
+            <a id="socialIcons" href="https://twitter.com/willgaechter" target="_blank"><img class="social" src="static/img/twitter.png"></a>
+        </div>
+    </div>
+    <div class="link-list" id='linkList'>
+        <ul id="hubLinks">
+            <li><button id="About" class='AboutLink'>About</button></li>
+            <li><button id="Projects" class='ProjectsLink'>Projects</button></li>
+            <li><button id='Education' class='EducationLink'>Education</button></li>
+            <li><button id='Resume' class='ResumeLink'>Resume</button></li>
+        </ul>
+    </div>
+</head>
+
+<body>
+    
+    <div id="About" class="hidden">
+        <h3>ABOUT PAGE</h3>
+    </div>
+    <div id="Projects" class='hidden'>
+        <h3>PROJECTS PAGE</h3>
+    </div>
+    <div id='Education' class='hidden'>
+        <h3>EDUCATION PAGE</h3>
+    </div>
+    <div id='Resume' class='hidden'>
+        <h3>RESUME PAGE</h3>
+    </div>
+
+    <script>
+
+$("button").click(function(tab) {
+    var buttonID = tab.target.id;
+    var buttonIDstring = buttonID.toString();
+    var classSelect = "#";
+    var buttonIDfinder = classSelect.concat(buttonIDstring);
+    console.log(buttonIDfinder);
+    var newDiv = $('body').find("div" + buttonIDfinder);
+    console.log(newDiv.attr('class'));
+
+    $('.hidden').each(function(i) {
+        if ( $(this).css('display') == 'block' ) {
+            var oldDiv = $(this);
+            console.log(oldDiv.attr('id'));
+            console.log(newDiv.attr('id'));
+            if (oldDiv.attr('id') == newDiv.attr('id')) {
+                return console.log("Already Showing");
+            } else {
+                console.log("Changing with Fade::")
+                console.log("old DIV id: " + oldDiv.attr('id'));
+                console.log("new DIV id: " + newDiv.attr('id'));
+                oldDiv.fadeOut("slow").promise().done(function() {
+                    newDiv.fadeIn("slow");
+                });
+            };
+        };
+    });
+});
+    </script>
+</body> 

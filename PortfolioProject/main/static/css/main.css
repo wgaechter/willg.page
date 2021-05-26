@@ -1,0 +1,139 @@
+/*  class = .
+    id = #
+*/
+
+body {
+    background-color: #f9f9f9;
+}
+
+h1 {
+    text-align: center;
+    font-family: Cambria,Georgia,serif; 
+    font-size: 40;
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+
+    /* animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; */
+}
+
+p {
+    text-align: center;
+    font-family: Cambria,Georgia,serif;    
+    margin: 0px;
+    padding-bottom: 4px;
+
+    /* animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s; */
+}
+
+#header {
+    border-bottom: double;
+    width: 80%;
+    margin: auto;
+    display: none;
+}
+
+#linkList {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    display: inline;
+}
+
+.link-list li{
+    display: none;
+    font-family: Cambria,Georgia,serif;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.hubLinks {
+    margin-top: 8px;
+    padding: 0px;
+    /*display: inline; */
+}
+
+ul {
+    padding: 0px;
+}
+
+button {
+    color: black;
+    text-decoration: none;
+    font-size: clamp(0.75rem, -0.4647rem + 4.67vw, 1.875rem);
+    border: none;
+    font-family: Cambria,Georgia,serif;
+    background-color: #f9f9f9;
+}
+
+button:hover {
+    text-decoration: underline;
+}
+
+
+
+h3 {
+    font-family: Cambria,Georgia,serif;
+}
+
+#socialBar {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#socialIcons {
+    text-align: center;
+}
+
+.social {
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+/* ABOUT PAGE CSS */
+
+
+
+@media only screen and (min-width: 651px) {
+    li {
+        display: inline;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    ul {
+        padding: 0px
+    }
+    li {
+        display: block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+/* --------------------------- */
+
+.hidden {
+    display: none;
+    width: 90%;
+    margin-top: 40px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #f9f9f9;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 15px #888888;
+    text-align: center;
+}
