@@ -99,6 +99,26 @@ h3 {
     padding-left: 5px;
 }
 
+/* Projects Tab */
+/* need h5, h6, p/classes set up as needed */
+
+.projectContain {
+    height: 400px;
+    width: fit-content;
+    border-width: 2px;
+    background-color: #888888;
+}
+
+.projecIMG {
+    width: 350px;
+    height: 350px;
+}
+
+.projectCard {
+    text-align: left;
+    font-family: Cambria,Georgia,serif;
+}
+
 /* ABOUT PAGE CSS */
 
 

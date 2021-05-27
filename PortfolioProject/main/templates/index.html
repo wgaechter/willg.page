@@ -36,12 +36,28 @@
 </head>
 
 <body>
-    
+    <script>
+            $(".projectContain").click(function() {
+                window.location = $(this).find("a").attr("href")
+            })
+    </script>
     <div id="About" class="hidden">
         <h3>ABOUT PAGE</h3>
     </div>
     <div id="Projects" class='hidden'>
-        <h3>PROJECTS PAGE</h3>
+    {% for p in projects %}
+        <div class='projectContain'>
+            <a href='{% url p.link %}'></a>
+            <img class='projectIMG' src='{% static p.img %}'>
+            <div class='projectCard'>
+                <h5>{{ p.title }}</h5>
+                <h6>{{ p.sub_title }}</h6>
+                <p>{{ p.project_type }}</p>
+                <p>{{ p.languages }}</p>
+                <p>{{ p.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
     </div>
     <div id='Education' class='hidden'>
         <h3>EDUCATION PAGE</h3>
