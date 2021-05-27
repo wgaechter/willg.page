@@ -18,7 +18,7 @@ h1 {
     animation-fill-mode: forwards; */
 }
 
-p {
+#email {
     text-align: center;
     font-family: Cambria,Georgia,serif;    
     margin: 0px;
@@ -102,22 +102,23 @@ h3 {
 /* Projects Tab */
 /* need h5, h6, p/classes set up as needed */
 
-.projectContain {
+/* .projectContain {
     height: 400px;
     width: fit-content;
+    border-style: solid;
     border-width: 2px;
-    background-color: #888888;
 }
 
-.projecIMG {
-    width: 350px;
-    height: 350px;
+.projectContain img .projecIMG {
+    width: 150px;
+    height: 150px;
+    float: left;
 }
 
 .projectCard {
     text-align: left;
     font-family: Cambria,Georgia,serif;
-}
+} */
 
 /* ABOUT PAGE CSS */
 
@@ -157,3 +158,66 @@ h3 {
     box-shadow: 0px 0px 15px #888888;
     text-align: center;
 }
+
+#GitHubLink {
+    color: black;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.projectContain {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 400px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.projectContain img .projecIMG {
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+.projectCard {
+    text-align: left;
+    font-family: Cambria,Georgia,serif;
+    padding-top: 50px;
+}
+
+h5 {
+    font-family: Cambria,Georgia,serif;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h6 {
+    font-family: Cambria,Georgia,serif;
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+#ProjectType {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#languages {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+    font-style: italic;
+
+}
+
+#ProjectDesc {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+

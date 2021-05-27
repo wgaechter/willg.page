@@ -18,7 +18,7 @@
     <title>Portfolio practice</title>
     <div id="header">
         <h1>William Gaechter</h1>
-        <p>will.gaechter@gmail.com</p>
+        <p id='email'>will.gaechter@gmail.com</p>
         <div id="socialBar">
             <a id="socialIcons" href="https://github.com/wgaechter" target="_blank"><img class="social" src="{% static 'img/github.png' %}"></a>
             <a id="socialIcons" href="https://www.linkedin.com/in/williamgaechter/" target="_blank"><img class="social" src="{% static 'img/linkedin.png' %}"></a>
@@ -46,17 +46,18 @@
     </div>
     <div id="Projects" class='hidden'>
     {% for p in projects %}
-        <div class='projectContain'>
-            <a href='{% url p.link %}'></a>
-            <img class='projectIMG' src='{% static p.img %}'>
+        <a id='GitHubLink' href='{{ p.link }}'>
+        <div class='projectContain'>    
+            <img class='projectIMG' src='{% static p.img %}' style="height: 350px; width: 350px; float: left; padding: 20px;">
             <div class='projectCard'>
                 <h5>{{ p.title }}</h5>
                 <h6>{{ p.sub_title }}</h6>
-                <p>{{ p.project_type }}</p>
-                <p>{{ p.languages }}</p>
-                <p>{{ p.description }}</p>
+                <p id='ProjectType'>{{ p.project_type }}</p>
+                <p id='ProjectDesc'>{{ p.description }}</p>
+                <p id='languages'>{{ p.languages }}</p>
             </div>
         </div>
+        </a>
     {% endfor %}
     </div>
     <div id='Education' class='hidden'>
