@@ -46,7 +46,7 @@
     </div>
     <div id="Projects" class='hidden'>
     {% for p in projects %}
-        <a id='GitHubLink' href='{{ p.link }}'>
+        <a id='GitHubLink' href='{{ p.link }}' target="_blank">
         <div class='projectContain'>    
             <img class='projectIMG' src='{% static p.img %}' style="height: 350px; width: 350px; float: left; padding: 20px;">
             <div class='projectCard'>
