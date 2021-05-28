@@ -14,6 +14,12 @@
             });
         });
     </script> 
+    <script>
+        $(document).on("click", 'button', function(){
+            $('button').removeClass('ActiveTab');
+            $(this).addClass('ActiveTab');
+        });
+    </script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <title>Portfolio practice</title>
     <div id="header">
@@ -27,10 +33,10 @@
     </div>
     <div class="link-list" id='linkList'>
         <ul id="hubLinks">
-            <li><button id="About" class='AboutLink'>About</button></li>
-            <li><button id="Projects" class='ProjectsLink'>Projects</button></li>
-            <li><button id='Education' class='EducationLink'>Education</button></li>
-            <li><button id='Resume' class='ResumeLink'>Resume</button></li>
+            <li><button id="About" class='ActiveTab'>About</button></li>
+            <li><button id="Projects">Projects</button></li>
+            <li><button id='Education'>Education</button></li>
+            <li><button id='Resume'>Resume</button></li>
         </ul>
     </div>
 </head>
