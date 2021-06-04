@@ -167,6 +167,36 @@ h3 {
     text-decoration: none;
 }
 
+.aboutContain {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+}
+
+
+figure {
+    float: right;
+    padding: 10px;
+    height: 350px;
+    width: 250px;
+    margin-bottom: 175px;
+}
+
+figcaption {
+    font-family: Cambria,Georgia,serif;
+    border-bottom: double;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.aboutME {
+    font-family: Cambria,Georgia,serif;   
+    text-align: left;
+}
+
 .projectContain {
     margin-top: 2.5%;
     margin-bottom: 2.5%;
