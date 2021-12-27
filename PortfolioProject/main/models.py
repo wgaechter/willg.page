@@ -12,3 +12,5 @@ class Projects(models.Model):
     img = models.FilePathField(path="static/img")
 
 
+
+
