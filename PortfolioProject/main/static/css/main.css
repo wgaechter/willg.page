@@ -250,3 +250,19 @@ h6 {
     font-family: Cambria,Georgia,serif;
     text-align: left;
 }
+
+#cName {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+}
+
+#cSynop {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#cDate {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
