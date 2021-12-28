@@ -51,9 +51,9 @@
         <div class='aboutContain'>
             <figure>
                 <img class='headshot' src='{% static "img/headshot.jpg" %}'>
-                <figcaption>Rostering Data Specialst <br> Edgenuity</figcaption>
+                <figcaption>Rostering Data Specialist <br> Imagine Learning</figcaption>
                 <figcaption>Data Analytics and Visualization Certification <br> University of Minnesota</figcaption>
-                <figcaption>B.S. Sport Management <br> University of Minnesota</figcaption>
+                <figcaption>B.S. Sports Management <br> University of Minnesota</figcaption>
             </figure>
             <div class='aboutME'>
                 <h5>To Whom It May Concern</h5>
@@ -71,8 +71,6 @@
                     Proin non consequat nisl. Mauris eu posuere enim. Nullam pellentesque interdum tortor vel posuere. Donec ut eros vitae dui varius venenatis. Pellentesque tincidunt nisl risus, et accumsan elit tincidunt nec. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed efficitur venenatis pharetra. In quis turpis dignissim, lobortis nulla vitae, pulvinar massa. Curabitur ipsum eros, tempor id justo vel, tristique ullamcorper ligula. Sed ante turpis, placerat sit amet tortor et, egestas eleifend libero. Phasellus pellentesque sagittis dictum. Nulla pharetra, ex quis ultrices volutpat, purus mauris ultrices odio, quis bibendum magna tortor ac nulla. Vivamus elementum iaculis ante, vel auctor arcu accumsan eu. Phasellus leo nisi, blandit sed arcu at, volutpat commodo ante.
                 </p>
             </div>
-
-
         </div>
     </div>
     <div id="Projects" class='hidden'>
@@ -92,10 +90,16 @@
     {% endfor %}
     </div>
     <div id='Education' class='hidden'>
-        <h3>EDUCATION PAGE</h3>
+    {% for c in certifications %}
+        <div class="cContain"> 
+            <p id=cName>{{ c.org }} - {{ c.cert_name }}</p>
+            <p id=cSynop>{{ c.synop }}</p>
+            <p id=cDate>{{ c.cert_month }}, {{ c.cert_year }}</p>
+        </div>
+    {% endfor %}
     </div>
     <div id='Resume' class='hidden'>
-        <h3>RESUME PAGE</h3>
+        <embed src='{% static "pdf/resume.pdf"%}' width="98%" height="98%" style="margin:1%">
     </div>
 
     <script>
