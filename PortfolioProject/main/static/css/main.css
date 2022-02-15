@@ -145,7 +145,7 @@ h3 {
     }
 }
 
-/* --------------------------- */
+/*-----------------------LINKS---------------------------*/
 
 .hidden {
     display: none;
@@ -166,6 +166,8 @@ h3 {
     font-style: normal;
     text-decoration: none;
 }
+
+/*-----------------------ABOUT---------------------------*/
 
 .aboutContain {
     margin-top: 2.5%;
@@ -196,6 +198,8 @@ figcaption {
     font-family: Cambria,Georgia,serif;   
     text-align: left;
 }
+
+/*-----------------------PROJECTS---------------------------*/
 
 .projectContain {
     margin-top: 2.5%;
@@ -251,7 +255,50 @@ h6 {
     text-align: left;
 }
 
+/*-----------------------EDUCATION---------------------------*/
+
+.clear {
+    clear: both;
+}
+
+.degreeHeader {
+    width: 80%; 
+    height: auto; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.degree_contain {
+    width: 95%;
+    clear: both;
+}
+
+#EduSubH {
+    text-align: center;
+    font-family: Cambria,Georgia,serif;
+    font-size: 30px;
+}
+
+#EduSubB {
+    border-bottom-style: double;
+    width: 75%;
+    margin: auto;
+}
+
+#degree_1 {
+    width: 49%;
+    float: left;
+}
+
+#degree_2 {
+    width: 49%;
+    float: right;
+}
+
 #cName {
+    font-family: Cambria,Georgia,serif;
     font-weight: bold;
     font-size: 30px;
     text-align: left;
@@ -266,3 +313,5 @@ h6 {
     font-family: Cambria,Georgia,serif;
     text-align: left;
 }
+
+/*-----------------------RESUME---------------------------*/

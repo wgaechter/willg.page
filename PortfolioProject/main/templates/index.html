@@ -90,13 +90,31 @@
     {% endfor %}
     </div>
     <div id='Education' class='hidden'>
-    {% for c in certifications %}
-        <div class="cContain"> 
-            <p id=cName>{{ c.org }} - {{ c.cert_name }}</p>
-            <p id=cSynop>{{ c.synop }}</p>
-            <p id=cDate>{{ c.cert_month }}, {{ c.cert_year }}</p>
+        <b id="EduSubH">Collegiate Education</b>
+        <div id="EduSubB"></div>
+        <img src='{% static "img/UofMN.png" %}' class="degreeHeader">
+        <div id="degree_1">
+            <p>College of Education and Human Development</p>
+            <p>Bachelor of Science</p>
+            <p>Sports Management</p>
         </div>
-    {% endfor %}
+        <div id="degree_2">
+            <P>College of Continuing & Professional Studies</P>
+            <p>Professional Certificate</p>
+            <P>Data Analytics and Visualization</P>
+        </div>
+        <br class="clear">
+    </div>
+    <div id='Education' class='hidden'>
+        <b id="EduSubH">Industry Certifications</b>
+        <div id="EduSubB"></div>  
+        {% for c in certifications %}
+            <div class="cContain"> 
+                <p id=cName>{{ c.org }} - {{ c.cert_name }}</p>
+                <p id=cSynop>{{ c.synop }}</p>
+                <p id=cDate>{{ c.cert_month }}, {{ c.cert_year }}</p>
+            </div>
+        {% endfor %}
     </div>
     <div id='Resume' class='hidden'>
         <embed src='{% static "pdf/resume.pdf"%}' width="98%" height="98%" style="margin:1%">
