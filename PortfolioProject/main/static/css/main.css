@@ -58,7 +58,7 @@ h1 {
     /*display: inline; */
 }
 
-ul {
+ul.tabs {
     padding: 0px;
 }
 
@@ -127,7 +127,7 @@ h3 {
 
 
 @media only screen and (min-width: 651px) {
-    li {
+    li.tabs {
         display: inline;
         padding-right: 20px;
         padding-left: 20px;
@@ -135,10 +135,10 @@ h3 {
 }
 
 @media only screen and (max-width: 650px) {
-    ul {
+    ul.tabs {
         padding: 0px
     }
-    li {
+    li.tabs {
         display: block;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -271,8 +271,9 @@ h6 {
 }
 
 .degree_contain {
+    margin: auto;
     width: 95%;
-    clear: both;
+    display: flex;
 }
 
 #EduSubH {
@@ -283,18 +284,47 @@ h6 {
 
 #EduSubB {
     border-bottom-style: double;
-    width: 75%;
+    width: 95%;
     margin: auto;
 }
 
-#degree_1 {
-    width: 49%;
-    float: left;
+.degree {
+    flex: 1;
 }
 
-#degree_2 {
-    width: 49%;
-    float: right;
+#School {
+    font-family: Cambria,Georgia,serif;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+#Degree {
+    font-family: Cambria,Georgia,serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+    margin-top: 8px;
+}
+
+#Major {
+    font-family: Cambria,Georgia,serif;
+    font-size: 18px;
+    margin: 2px;
+}
+
+#gpa {
+    font-family: Cambria,Georgia,serif;
+    font-size: 12px;
+    margin: 2px;
+}
+
+.cContain {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+    border-bottom: double;
 }
 
 #cName {
@@ -302,9 +332,15 @@ h6 {
     font-weight: bold;
     font-size: 30px;
     text-align: left;
+    margin-bottom: 10px;
 }
 
 #cSynop {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#cDesc {
     font-family: Cambria,Georgia,serif;
     text-align: left;
 }
@@ -314,4 +350,23 @@ h6 {
     text-align: left;
 }
 
+#cScore {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#degSyn {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+ul.BCL {
+    font-family: Cambria,Georgia,serif;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+li.BCL {
+    text-align: left;
+}
 /*-----------------------RESUME---------------------------*/

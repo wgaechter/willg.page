@@ -32,11 +32,11 @@
         </div>
     </div>
     <div class="link-list" id='linkList'>
-        <ul id="hubLinks">
-            <li><button id="About" class='ActiveTab'>About</button></li>
-            <li><button id="Projects">Projects</button></li>
-            <li><button id='Education'>Education</button></li>
-            <li><button id='Resume'>Resume</button></li>
+        <ul class="tabs" id="hubLinks">
+            <li class="tabs"><button id="About" class='ActiveTab'>About</button></li>
+            <li class="tabs"><button id="Projects">Projects</button></li>
+            <li class="tabs"><button id='Education'>Education</button></li>
+            <li class="tabs"><button id='Resume'>Resume</button></li>
         </ul>
     </div>
 </head>
@@ -51,7 +51,7 @@
         <div class='aboutContain'>
             <figure>
                 <img class='headshot' src='{% static "img/headshot.jpg" %}'>
-                <figcaption>Rostering Data Specialist <br> Imagine Learning</figcaption>
+                <figcaption>Rostering Data Specialist <br> Imagine Learning Software</figcaption>
                 <figcaption>Data Analytics and Visualization Certification <br> University of Minnesota</figcaption>
                 <figcaption>B.S. Sports Management <br> University of Minnesota</figcaption>
             </figure>
@@ -93,17 +93,31 @@
         <b id="EduSubH">Collegiate Education</b>
         <div id="EduSubB"></div>
         <img src='{% static "img/UofMN.png" %}' class="degreeHeader">
-        <div id="degree_1">
-            <p>College of Education and Human Development</p>
-            <p>Bachelor of Science</p>
-            <p>Sports Management</p>
-        </div>
-        <div id="degree_2">
-            <P>College of Continuing & Professional Studies</P>
-            <p>Professional Certificate</p>
-            <P>Data Analytics and Visualization</P>
-        </div>
-        <br class="clear">
+        <div class=degree_contain>   
+            <div class="degree">
+                <p id="School">College of Education and Human Development</p>
+                <p id="Degree">Bachelor of Science</p>
+                <p id="Major">Sports Management</p>
+                <p id="gpa">3.1 GPA</p>
+            </div>
+            <div class="degree">
+                <P id="School">College of Continuing & Professional Studies</P>
+                <p id="Degree">Professional Certificate</p>
+                <P id="Major">Data Analytics and Visualization</P>
+                <p id="gpa">4.0 GPA</p>
+                <p id="degSyn">A 24-week intensive program focused on gaining technical skills
+                    in programs including:
+                </p>
+                <ul class="BCL">
+                    <li class="BCL">Excel/VBA</li>
+                    <li class="BCL">Python (Jupyter Notebook, Pandas, MatPlotLib)</li>
+                    <li class="BCL">SQL (PostGRE, SQLite, PGAdmin)</li>
+                    <li class="BCL">Tableau</li>
+                    <li class="BCL">Machine Learning</li>
+                </ul>
+            </div>
+        </div>    
+    <br class="clear">
     </div>
     <div id='Education' class='hidden'>
         <b id="EduSubH">Industry Certifications</b>
@@ -112,7 +126,9 @@
             <div class="cContain"> 
                 <p id=cName>{{ c.org }} - {{ c.cert_name }}</p>
                 <p id=cSynop>{{ c.synop }}</p>
+                <p id=cDesc>{{ c.desc }}</p>
                 <p id=cDate>{{ c.cert_month }}, {{ c.cert_year }}</p>
+                <p id=cScore>Test Score: {{ c.test_score }}</p>
             </div>
         {% endfor %}
     </div>
