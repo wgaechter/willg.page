@@ -145,7 +145,7 @@ h3 {
     }
 }
 
-/* --------------------------- */
+/*-----------------------LINKS---------------------------*/
 
 .hidden {
     display: none;
@@ -166,6 +166,8 @@ h3 {
     font-style: normal;
     text-decoration: none;
 }
+
+/*-----------------------ABOUT---------------------------*/
 
 .aboutContain {
     margin-top: 2.5%;
@@ -196,6 +198,8 @@ figcaption {
     font-family: Cambria,Georgia,serif;   
     text-align: left;
 }
+
+/*-----------------------PROJECTS---------------------------*/
 
 .projectContain {
     margin-top: 2.5%;
@@ -251,13 +255,100 @@ h6 {
     text-align: left;
 }
 
-#cName {
-    font-weight: bold;
+/*-----------------------EDUCATION---------------------------*/
+
+.clear {
+    clear: both;
+}
+
+.degreeHeader {
+    width: 80%; 
+    height: auto; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.degree_contain {
+    margin: auto;
+    width: 95%;
+    display: flex;
+}
+
+#EduSubH {
+    text-align: center;
+    font-family: Cambria,Georgia,serif;
     font-size: 30px;
+}
+
+#EduSubB {
+    border-bottom-style: double;
+    width: 95%;
+    margin: auto;
+}
+
+.degree {
+    flex: 1;
+}
+
+.degree:first-child {
+    margin-right: 20px;
+}
+
+#School {
+    font-family: Cambria,Georgia,serif;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+#Degree {
+    font-family: Cambria,Georgia,serif;
+    font-size: 18px;
+    margin-bottom: 2px;
+    margin-top: 8px;
+}
+
+#Major {
+    font-family: Cambria,Georgia,serif;
+    font-size: 18px;
+    margin: 2px;
+}
+
+#gpa {
+    font-family: Cambria,Georgia,serif;
+    font-size: 12px;
+    margin: 2px;
+}
+
+#collegeDesc {
     text-align: left;
 }
 
+.cContain {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%;
+    border-bottom: double;
+}
+
+#cName {
+    font-family: Cambria,Georgia,serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
 #cSynop {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#cDesc {
     font-family: Cambria,Georgia,serif;
     text-align: left;
 }
@@ -266,3 +357,25 @@ h6 {
     font-family: Cambria,Georgia,serif;
     text-align: left;
 }
+
+#cScore {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+#degSyn {
+    font-family: Cambria,Georgia,serif;
+    text-align: left;
+}
+
+ul.BCL {
+    font-family: Cambria,Georgia,serif;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+li.BCL {
+    text-align: left;
+    display: list-item;
+}
+/*-----------------------RESUME---------------------------*/
