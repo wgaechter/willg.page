@@ -58,7 +58,7 @@ h1 {
     /*display: inline; */
 }
 
-ul.tabs {
+ul {
     padding: 0px;
 }
 
@@ -127,7 +127,7 @@ h3 {
 
 
 @media only screen and (min-width: 651px) {
-    li.tabs {
+    li {
         display: inline;
         padding-right: 20px;
         padding-left: 20px;
@@ -135,10 +135,10 @@ h3 {
 }
 
 @media only screen and (max-width: 650px) {
-    ul.tabs {
+    ul {
         padding: 0px
     }
-    li.tabs {
+    li {
         display: block;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -292,6 +292,10 @@ h6 {
     flex: 1;
 }
 
+.degree:first-child {
+    margin-right: 20px;
+}
+
 #School {
     font-family: Cambria,Georgia,serif;
     font-style: italic;
@@ -316,6 +320,10 @@ h6 {
     font-family: Cambria,Georgia,serif;
     font-size: 12px;
     margin: 2px;
+}
+
+#collegeDesc {
+    text-align: left;
 }
 
 .cContain {
@@ -368,5 +376,6 @@ ul.BCL {
 
 li.BCL {
     text-align: left;
+    display: list-item;
 }
 /*-----------------------RESUME---------------------------*/
