@@ -181,7 +181,7 @@ h3 {
 figure {
     float: right;
     padding: 10px;
-    height: 350px;
+    height: auto;
     width: 250px;
     margin-bottom: 175px;
 }
@@ -271,6 +271,7 @@ h6 {
 }
 
 .degree_contain {
+    font-family: Cambria,Georgia,serif;
     margin: auto;
     width: 95%;
     display: flex;
@@ -284,6 +285,7 @@ h6 {
 
 #EduSubB {
     border-bottom-style: double;
+    font-family: Cambria,Georgia,serif;
     width: 95%;
     margin: auto;
 }
@@ -324,6 +326,7 @@ h6 {
 
 #collegeDesc {
     text-align: left;
+    font-family: Cambria,Georgia,serif;
 }
 
 .cContain {
@@ -378,4 +381,5 @@ li.BCL {
     text-align: left;
     display: list-item;
 }
+
 /*-----------------------RESUME---------------------------*/
