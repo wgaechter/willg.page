@@ -10,46 +10,38 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+        <nav class="nav navbar-expand justify-content-center" id="MainNavbar">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-contentalign-content-center">
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Background">Background</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Resume">Resume</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Resume">Resume</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Contact</a>
                         </li>
                     </ul>
-                </div>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+        <!--Linkedin, Github, and Gmail icon.svg links-->
+        <nav class="nav navbar-expand justify-content-center" id="IconNavbar">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-contentalign-content-center">
-                    <ul class="navbar-nav flex-grow-1 justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="https://www.linkedin.com/in/williamgaechter/">LinkedIn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="https://github.com/wgaechter">GitHub</a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    <li class="nav-item" id="Linkedin">
+                        <a href="https://www.linkedin.com/in/williamgaechter/"><img src="~/lib/static/LinkedIn_icon72x72.svg" height="20" width="20" /></a>
+                    </li>
+                    <li class="nav-item" id="Github">
+                        <a href="https://github.com/wgaechter"><img src="~/lib/static/github-mark.svg" height="20" width="20" /></a>
+                    </li>
+                    <li class="nav-item" id="Gmail">
+                        <a href="mailto:will.gaechter@gmail.com"><img src="~/lib/static/Gmail_icon_(2020).svg" height="20" width="20" /></a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>

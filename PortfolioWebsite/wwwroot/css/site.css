@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: Cambria, serif;
 }
 
 @media (min-width: 768px) {
@@ -18,5 +19,36 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: Cambria, serif;
 }
+
+header {
+    margin-bottom: 10px;
+}
+
+li.nav-item { 
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+a.nav-link {
+    font-size: 30px;
+}
+
+.navbar-nav > li {
+    float: left;
+    position: relative;
+}
+
+.navbar-light .navbar-nav .active a::after {
+    border-bottom: 5px solid #5bc0eb;
+    bottom: -10px;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
