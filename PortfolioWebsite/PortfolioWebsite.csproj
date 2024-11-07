@@ -10,4 +10,8 @@
     <Folder Include="wwwroot\lib\static\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.7.400.45" />
+  </ItemGroup>
+
 </Project>
