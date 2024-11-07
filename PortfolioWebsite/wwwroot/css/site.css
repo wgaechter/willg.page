@@ -24,7 +24,11 @@ body {
 }
 
 header {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-weight: 500;
 }
 
 li.nav-item { 
@@ -50,5 +54,9 @@ a.nav-link {
     left: 0;
     position: absolute;
     right: 0;
+}
+
+#headerName {
+    margin-top: 20px;
 }
 
