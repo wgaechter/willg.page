@@ -105,7 +105,7 @@ span.TechnicalSkills_Listpoint {
 
 h2.jobHeaderContainer {
     display: block;
-    margin-top:0in;
+    margin-top:8px;
     margin-right:0in;
     margin-bottom:0in;
     margin-left:0in;
@@ -190,5 +190,4 @@ span.eduGrad {
     text-indent: 0in;
     line-height: 103%;
     font-size: 13px;
-    margin-bottom: 4px;
 }

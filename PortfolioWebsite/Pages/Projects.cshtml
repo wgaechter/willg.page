@@ -2,6 +2,26 @@
 @model PortfolioWebsite.Pages.ProjectsModel
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
+
+    ProjectsModel projects = new ProjectsModel();
+
+    //Run pull here
+    //Get output, put into a for loop for each with the repos to be placed into a bootstrap container 3 wide
+
+    IReadOnlyCollection<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
+
+    if (repositories != null)
+        foreach (Octokit.Repository repo in repositories)
+        {
+            <div class="repo" id=@repo.Id>
+                <p>@repo.FullName</p>
+            </div>
+        }
+    else
+    {
+        <p>RUh Roh</p>
+    }
 }
 
+<h1>Projects</h1>
 
