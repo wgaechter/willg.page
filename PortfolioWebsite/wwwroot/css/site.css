@@ -24,10 +24,17 @@ body {
 }
 
 header {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
-li.nav-item { 
+h1 {
+    font-weight: 500;
+}
+
+/*Header Navbar*/
+
+
+li.nav-item {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 0px;
@@ -51,4 +58,139 @@ a.nav-link {
     position: absolute;
     right: 0;
 }
+
+#headerName {
+    margin-top: 20px;
+}
+
+/*Linebreak*/
+
+p.Linebreak {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .75pt;
+    margin-left: 1.25in;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 15px;
+    font-family: "Cambria",serif;
+    color: black;
+}
+
+/*Technical Skills*/
+
+p.TechnicalSkills_ListHeader {
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: .75pt;
+    margin-left: 85px;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 13px;
+    font-family: "Cambria",serif;
+    color: black;
+}
+
+ul.Resume_List {
+    list-style-type: square;
+    margin-left: 0.75in;
+}
+
+span.TechnicalSkills_Listpoint {
+    line-height: 103%;
+    font-size: 13px;
+}
+
+/*Experience*/
+
+h2.jobHeaderContainer {
+    display: block;
+    margin-top:8px;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    
+    text-indent:0in;
+    line-height:103%;
+    font-size:13px;
+    color:black;
+}
+
+span.jobYears {
+    float: left;
+    margin-left: 0px;
+    width: 85px;
+}
+
+span.jobCompanyName {
+
+}
+
+span.jobLocation {
+    float: right;
+}
+
+span.jobTitle {
+    margin-left: 85px;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 13px;
+}
+
+ul.jobDescription {
+    list-style-type: square;
+    margin-left: 0.75in;
+    font-size: 13px;
+}
+
+
+/*Education*/
+h2.eduHeaderContainer {
+    display: block;
+    margin-top: 0in;
+    margin-right: 0in;
+    margin-bottom: 0in;
+    margin-left: 0in;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 13px;
+    color: black;
+}
+
+span.eduYears {
+    float: left;
+    margin-left: 0px;
+    width: 85px;
+}
+
+span.eduSchoolName {
+}
+
+span.eduLocation {
+    float: right;
+}
+
+span.eduProgram {
+    margin-left: 85px;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 13px;
+}
+
+ul.eduDescription {
+    list-style-type: square;
+    margin-left: 0.75in;
+    font-size: 13px;
+    margin-top: 0in;
+    margin-bottom: 0in;
+}
+
+span.eduGrad {
+    margin-left: 85px;
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 13px;
+}
+
+/*PROJECTS*/
 
