@@ -2,6 +2,8 @@
 @model PortfolioWebsite.Pages.ProjectsModel
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
+    int rows_needed = 0;
+    int repo_length = 0;
 
     ProjectsModel projects = new ProjectsModel();
 
@@ -11,17 +13,31 @@
     IReadOnlyCollection<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
 
     if (repositories != null)
-        foreach (Octokit.Repository repo in repositories)
+    {
+        repo_length = repositories.Count;
+        rows_needed = rows_needed % 3;
+        int row_number = 1;
+        int repo_number = 0;
+
+        for (int i = 0; i < repo_length;)
         {
-            <div class="repo" id=@repo.Id>
-                <p>@repo.FullName</p>
-            </div>
+                <div class="row" id=@row_number>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        <div class="col" id=@i>
+                            <h3>@repositories.ElementAt(i).Name</h3>
+                            <p>@repositories.ElementAt(i).Description</p>
+                            <p>@repositories.ElementAt(i).Language</p>
+                        </div>
+
+                        i++;
+                    }
+                </div>
         }
+    }
     else
     {
-        <p>RUh Roh</p>
+        <p style="display: block; text-align:center">Github API failed to return the public repositories.  Please reach out to me to correct the issue, thank you!</p>
     }
 }
-
-<h1>Projects</h1>
 
