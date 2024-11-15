@@ -34,37 +34,47 @@ h1 {
     font-weight: 500;
 }
 
+div#headerName_container {
+    margin-top: .25in;
+    margin-right: 1in;
+    margin-bottom: 10px;
+    margin-left: 1in;
+    text-align: center;
+}
+
+span#headerName_text {
+    text-indent: 0in;
+    line-height: 103%;
+    font-size: 32px;
+    font-family: "Cambria",serif;
+    color: black;
+    margin: 0in;
+    text-align: center;
+}
+
 /*Header Navbar*/
 
-
-li.nav-item {
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 0px;
-    margin-top: 5px;
-}
-
 a.nav-link {
-    font-size: 30px;
-}
-
-.navbar-nav > li {
-    float: left;
-    position: relative;
-}
-
-.navbar-light .navbar-nav .active a::after {
-    border-bottom: 5px solid #5bc0eb;
-    bottom: -10px;
-    content: " ";
-    left: 0;
-    position: absolute;
-    right: 0;
+   font-size: 30px;
+   color: black;
 }
 
 #headerName {
     margin-top: 20px;
 }
+
+/*Icon Navbar*/
+
+nav#IconNavbar {
+
+}
+
+li.nav-item.icon {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+
 
 /*Linebreak*/
 
@@ -97,6 +107,7 @@ p.TechnicalSkills_ListHeader {
 ul.Resume_List {
     list-style-type: square;
     margin-left: 0.75in;
+    margin-right: 120px;
 }
 
 span.TechnicalSkills_Listpoint {
@@ -143,6 +154,7 @@ span.jobTitle {
 ul.jobDescription {
     list-style-type: square;
     margin-left: 0.75in;
+    margin-right: 120px;
     font-size: 13px;
 }
 
@@ -186,6 +198,7 @@ ul.eduDescription {
     font-size: 13px;
     margin-top: 0in;
     margin-bottom: 0in;
+    margin-right: 120px;
 }
 
 span.eduGrad {
@@ -201,22 +214,21 @@ div#RepoRow {
 
 }
 
-div#repo {
+div.repo {
     display: block;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 12px;
-    height: 300px;
-    width: 300px;
+    height: 2in;
+    width: 3.5in;
     padding: 30px;
     margin: 20px;
 }
 
-h3#repo {
+h3.repo {
 
 }
 
-p#repo {
+p.repo {
 
 }
 

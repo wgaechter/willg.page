@@ -1,64 +1,72 @@
 ﻿@page
+@using Microsoft.JSInterop;
+@inject IJSRuntime JS;
 @model PortfolioWebsite.Pages.ProjectsModel
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
     int rows_needed = 0;
     int repo_length = 0;
 
-    ProjectsModel projects = new ProjectsModel();
-    List<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
+    List<Octokit.Repository> repositories = Model.GetPublicRepos().Result;
 
     if (repositories != null)
     {
         repo_length = repositories.Count;
         rows_needed = rows_needed % 3;
 
-        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = projects.getAllLanguagesForRepo(repositories).Result;
+        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = Model.getAllLanguagesForRepo(repositories).Result;
 
         for (int i = 0; i < repo_length;)
         {
             <div class="row" id="RepoRow">
                 @for (int k = 0; k < 3; k++)
                 {
-                    <div class="col" id=repo>
-                        <h3 id="repo">@repositories.ElementAt(i).Name</h3>
-                            <p id="repo">@repositories.ElementAt(i).Description</p>
-                        @try {
-                            if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
-                            {
-                                IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
-                                foreach (Octokit.RepositoryLanguage lang in lang_list) 
+                    <div class="col">
+                        <div class="repo" id="@repositories.ElementAt(i).Name">
+                            <h3 class="repo">@repositories.ElementAt(i).Name</h3>
+                            <p class="repo">@repositories.ElementAt(i).Description</p>
+                            @try {
+                                if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
                                 {
-                                    if (lang != null)
+                                    IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
+                                    foreach (Octokit.RepositoryLanguage lang in lang_list) 
                                     {
-                                        projects._language_icons.TryGetValue(lang.Name, out var icon);
-                                        <a class="Lang_icon" hreh="@repositories.ElementAt(i).Homepage">@Html.Raw(icon)</a>
-                                    }
-                                    else
-                                    {
-                                        continue;
+                                        if (lang != null)
+                                        {
+                                            Model._language_icons.TryGetValue(lang.Name, out var icon);
+                                            <a class="Lang_icon" hreh="@repositories.ElementAt(i).Homepage">@Html.Raw(icon)</a>
+                                        }
+                                        else
+                                        {
+                                            continue;
+                                        }
                                     }
                                 }
+                                else
+                                {
+                                    continue;
+                                }
                             }
-                            else
+                            catch (ArgumentNullException e)
                             {
-                                continue;
+                                <span>@repositories.ElementAt(i).Language</span>
                             }
-                        }
-                        catch (ArgumentNullException e)
-                        {
-                            <span>@repositories.ElementAt(i).Language</span>
-                        }
+
                         </div>
+                    </div>
 
                         i++;
                     }
-                </div>
+            </div>
         }
+
+        //Fade In
+
     }
     else
     {
         <p style="display: block; text-align:center">Github API failed to return the public repositories.  Please reach out to me to correct the issue, thank you!</p>
     }
 }
+
 

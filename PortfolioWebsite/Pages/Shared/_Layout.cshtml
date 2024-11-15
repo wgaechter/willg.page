@@ -13,24 +13,22 @@
 </head>
 <body>
     <header>
-        <div id="headerName">
-            <p style='margin-top:0in;margin-right:0in;margin-bottom:.75pt;margin-left:49.75pt;text-indent:0in;line-height:103%;font-size:15px;font-family:"Cambria",serif;color:black;margin:0in;text-align:center;'>
-                <strong>
-                    <span style="font-size:32px;">William Joseph Gaechter</span>
-                </strong>
-            </p>
+        <div id="headerName_container">
+            <strong>
+                <span id="headerName_text">William Joseph Gaechter</span>
+            </strong>
         </div>
         <!--Linkedin, Github, and Gmail icon.svg links-->
         <nav class="nav navbar-expand justify-content-center" id="IconNavbar">
             <div class="container">
                 <ul class="navbar-nav flex-grow-1 justify-content-center">
-                    <li class="nav-item" id="Linkedin">
+                    <li class="nav-item icon" id="Linkedin">
                         <a href="https://www.linkedin.com/in/williamgaechter/"><img src="~/lib/static/LinkedIn_icon72x72.svg" height="20" width="20" /></a>
                     </li>
-                    <li class="nav-item" id="Github">
+                    <li class="nav-item icon" id="Github">
                         <a href="https://github.com/wgaechter"><img src="~/lib/static/github-mark.svg" height="20" width="20" /></a>
                     </li>
-                    <li class="nav-item" id="Gmail">
+                    <li class="nav-item icon" id="Gmail">
                         <a href="mailto:will.gaechter@gmail.com"><img src="~/lib/static/Gmail_icon_(2020).svg" height="20" width="20" /></a>
                     </li>
                 </ul>
@@ -40,16 +38,16 @@
             <div class="container">
                     <ul class="navbar-nav flex-grow-1 justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Resume">Resume</a>
+                            <a class="nav-link" asp-area="" asp-page="/Resume">Resume</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Projects">Projects</a>
+                            <a class="nav-link" asp-area="" asp-page="/Projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Contact">Contact</a>
+                            <a class="nav-link" asp-area="" asp-page="/Contact">Contact</a>
                         </li>
                     </ul>
             </div>
