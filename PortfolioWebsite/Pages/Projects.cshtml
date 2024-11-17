@@ -6,28 +6,49 @@
     int repo_length = 0;
 
     ProjectsModel projects = new ProjectsModel();
-
-    //Run pull here
-    //Get output, put into a for loop for each with the repos to be placed into a bootstrap container 3 wide
-
-    IReadOnlyCollection<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
+    List<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
 
     if (repositories != null)
     {
         repo_length = repositories.Count;
         rows_needed = rows_needed % 3;
-        int row_number = 1;
-        int repo_number = 0;
+
+        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = projects.getAllLanguagesForRepo(repositories).Result;
 
         for (int i = 0; i < repo_length;)
         {
-                <div class="row" id=@row_number>
-                    @for (int k = 0; k < 3; k++)
-                    {
-                        <div class="col" id=@i>
-                            <h3>@repositories.ElementAt(i).Name</h3>
-                            <p>@repositories.ElementAt(i).Description</p>
-                            <p>@repositories.ElementAt(i).Language</p>
+            <div class="row" id="RepoRow">
+                @for (int k = 0; k < 3; k++)
+                {
+                    <div class="col" id=repo>
+                        <h3 id="repo">@repositories.ElementAt(i).Name</h3>
+                            <p id="repo">@repositories.ElementAt(i).Description</p>
+                        @try {
+                            if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
+                            {
+                                IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
+                                foreach (Octokit.RepositoryLanguage lang in lang_list) 
+                                {
+                                    if (lang != null)
+                                    {
+                                        projects._language_icons.TryGetValue(lang.Name, out var icon);
+                                        <a class="Lang_icon" hreh="@repositories.ElementAt(i).Homepage">@Html.Raw(icon)</a>
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        catch (ArgumentNullException e)
+                        {
+                            <span>@repositories.ElementAt(i).Language</span>
+                        }
                         </div>
 
                         i++;

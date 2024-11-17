@@ -1,6 +1,7 @@
 html {
     font-size: 14px;
     font-family: Cambria, serif;
+    
 }
 
 @media (min-width: 768px) {
@@ -21,9 +22,11 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Cambria, serif;
+    background-color: #fffff0;
 }
 
 header {
+    background-color: #fffff0;
     margin-bottom: 30px;
 }
 
@@ -193,4 +196,34 @@ span.eduGrad {
 }
 
 /*PROJECTS*/
+
+div#RepoRow {
+
+}
+
+div#repo {
+    display: block;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 12px;
+    height: 300px;
+    width: 300px;
+    padding: 30px;
+    margin: 20px;
+}
+
+h3#repo {
+
+}
+
+p#repo {
+
+}
+
+.Lang_icon {
+    color: black;
+    text-decoration: none;
+}
+
+
 
