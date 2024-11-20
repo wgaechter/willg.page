@@ -33,7 +33,7 @@ namespace PortfolioWebsite.Pages
             using (MailMessage mm = new MailMessage(fromAddress, "admin@aspsnippets.com"))
             {
                 mm.Subject = model.Subject;
-                mm.Body = "Name: " + model.Name + "<br /><br />Email: " + model.Email + "<br />" + model.Body;
+                mm.Body = "Name: " + model.Name + "<br /><br />Company: " + model.Company + "<br /><br />Email: " + model.Email + "<br />" + model.Body;
                 mm.IsBodyHtml = true;
 
                 if (model.Attachment.Length > 0)
