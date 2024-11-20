@@ -1,0 +1,36 @@
+﻿@page
+@model PortfolioWebsite.Pages.ContactModel
+@{
+    <form method="post" enctype="multipart/form-data">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 80px">Name:</td>
+                <td><input type="text" name="Name"/></td>
+            </tr>
+            <tr>
+                <td>Subject:</td>
+                <td><input type="text" name="Subject"/></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="Email"/></td>
+            </tr>
+            <tr>
+                <td valign="top">Body:</td>
+                <td><textarea cols="20" rows="10" name="Body"></textarea></td>
+            </tr>
+            <tr>
+                <td>Attachment:</td>
+                <td><input type="file" name="Attachment"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Send" asp-page-handler="Submit"/></td>
+            </tr>
+        </table>
+        <br/>
+        <span style="color:green">@Model.Message</span>
+    </form>
+}
+
+
