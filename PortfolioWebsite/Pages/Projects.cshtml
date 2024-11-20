@@ -1,4 +1,6 @@
 ﻿@page
+@using Microsoft.JSInterop;
+@inject IJSRuntime JS;
 @model PortfolioWebsite.Pages.ProjectsModel
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
@@ -8,15 +10,14 @@
     int rows_needed = 0;
     int repo_length = 0;
 
-    ProjectsModel projects = new ProjectsModel();
-    List<Octokit.Repository> repositories = projects.GetPublicRepos().Result;
+    List<Octokit.Repository> repositories = Model.GetPublicRepos().Result;
 
     if (repositories != null)
     {
         repo_length = repositories.Count;
         rows_needed = rows_needed % 3;
 
-        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = projects.getAllLanguagesForRepo(repositories).Result;
+        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = Model.getAllLanguagesForRepo(repositories).Result;
 
         for (int i = 0; i < repo_length;)
         {
@@ -37,8 +38,12 @@
                                         <a class="Lang_icon">@Html.Raw(icon)</a>
                                     }
                                 }
+                                else
+                                {
+                                    continue;
+                                }
                             }
-                            else
+                            catch (ArgumentNullException e)
                             {
                                 //No lang in lang_list
                                 <span>@repositories.ElementAt(i).Language</span>
@@ -46,8 +51,11 @@
                     </div>
                         i++;
                     }
-                </div>
+            </div>
         }
+
+        //Fade In
+
     }
     else
     {

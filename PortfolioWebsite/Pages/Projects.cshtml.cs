@@ -11,16 +11,21 @@ namespace PortfolioWebsite.Pages
 {
     public class ProjectsModel : PageModel
     {
+        private readonly IConfiguration _configuration;
+        public string api_key { get; private set; }
         private readonly GitHubClient _client;
 
-        public ProjectsModel()
+        public ProjectsModel(IConfiguration configuration)
         {
-            _client = EstablishClient();
+            _configuration = configuration;
+            api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
+            _client = EstablishClient(api_key);
         }
-
-        public GitHubClient EstablishClient()
+        public GitHubClient EstablishClient(string api_key)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue("PortfolioWebsite"));
+            client.Credentials = new Credentials(api_key);
+
             return client;
         }
 
