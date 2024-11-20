@@ -225,5 +225,17 @@ p#repo {
     text-decoration: none;
 }
 
+/*Contact Page*/
 
+td {
+    padding: 10px;
+}
+
+textarea {
+    resize: none;
+}
+
+.ContactHeader {
+    text-align: center;
+}
 

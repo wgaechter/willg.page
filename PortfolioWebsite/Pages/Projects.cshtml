@@ -2,6 +2,9 @@
 @model PortfolioWebsite.Pages.ProjectsModel
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
+    
+    //https://www.c-sharpcorner.com/article/working-with-sql-lite-database-in-asp-net-core-web-api/
+
     int rows_needed = 0;
     int repo_length = 0;
 
@@ -23,8 +26,7 @@
                     <div class="col" id=repo>
                         <h3 id="repo">@repositories.ElementAt(i).Name</h3>
                             <p id="repo">@repositories.ElementAt(i).Description</p>
-                        @try {
-                            if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
+                            @if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
                             {
                                 IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
                                 foreach (Octokit.RepositoryLanguage lang in lang_list) 
@@ -32,25 +34,16 @@
                                     if (lang != null)
                                     {
                                         projects._language_icons.TryGetValue(lang.Name, out var icon);
-                                        <a class="Lang_icon" hreh="@repositories.ElementAt(i).Homepage">@Html.Raw(icon)</a>
-                                    }
-                                    else
-                                    {
-                                        continue;
+                                        <a class="Lang_icon">@Html.Raw(icon)</a>
                                     }
                                 }
                             }
                             else
                             {
-                                continue;
+                                //No lang in lang_list
+                                <span>@repositories.ElementAt(i).Language</span>
                             }
-                        }
-                        catch (ArgumentNullException e)
-                        {
-                            <span>@repositories.ElementAt(i).Language</span>
-                        }
-                        </div>
-
+                    </div>
                         i++;
                     }
                 </div>
@@ -61,4 +54,3 @@
         <p style="display: block; text-align:center">Github API failed to return the public repositories.  Please reach out to me to correct the issue, thank you!</p>
     }
 }
-
