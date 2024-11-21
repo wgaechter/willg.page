@@ -69,7 +69,7 @@ namespace PortfolioWebsite.Pages
         }
 
         public Dictionary<string, string> _language_icons = new Dictionary<string, string>
-                {
+        {
                     { "Git", "<i class='devicon-git-plain' style='color: #555'></i>" },
                     { "Github", "<i class='devicon-github-plain' style='color: #1688f0'></i>" },
                     { "Chrome", "<i class='devicon-chrome-plain' style='color: #1688f0'></i>" },
@@ -122,9 +122,6 @@ namespace PortfolioWebsite.Pages
                     { "TypeScript", "<i class='devicon-typescript-plain colored'></i> TypeScript" },
                     { "Vim Script", "<i class='devicon-vim-plain colored'></i> Vim Script" },
                     { "Vue", "<i class='devicon-vuejs-plain colored'></i> Vue" }
-                };
-
-
-}
-
+        };
+    }
 }

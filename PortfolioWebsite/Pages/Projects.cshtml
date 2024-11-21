@@ -24,38 +24,34 @@
             <div class="row" id="RepoRow">
                 @for (int k = 0; k < 3; k++)
                 {
-                    <div class="col" id=repo>
-                        <h3 id="repo">@repositories.ElementAt(i).Name</h3>
+                    <div class="col" id="repo">
+                            <h3 id="repo">@repositories.ElementAt(i).Name</h3>
                             <p id="repo">@repositories.ElementAt(i).Description</p>
-                            @if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
-                            {
-                                IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
-                                foreach (Octokit.RepositoryLanguage lang in lang_list) 
+                                @if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
                                 {
-                                    if (lang != null)
+                                    IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
+                                    foreach (Octokit.RepositoryLanguage lang in lang_list) 
                                     {
-                                        projects._language_icons.TryGetValue(lang.Name, out var icon);
-                                        <a class="Lang_icon">@Html.Raw(icon)</a>
+                                        if (lang != null)
+                                        {
+                                            Model._language_icons.TryGetValue(lang.Name, out var icon);
+                                            <span class="Lang_icon">@Html.Raw(icon)</span>
+                                        }
+                                        else
+                                        {
+                                            //No lang in lang_list
+                                            <span>@repositories.ElementAt(i).Language</span>
+                                        }
                                     }
                                 }
-                                else
-                                {
-                                    continue;
-                                }
-                            }
-                            catch (ArgumentNullException e)
-                            {
-                                //No lang in lang_list
-                                <span>@repositories.ElementAt(i).Language</span>
-                            }
+                        <a href=@repositories.ElementAt(i).HtmlUrl></a>
                     </div>
-                        i++;
-                    }
+
+                    //Adds to i in the initial loop for the rows.  I will increase by 3 each loop when it returns to represent the 3 projects that are placed in each row.
+                    i++;
+                }
             </div>
         }
-
-        //Fade In
-
     }
     else
     {

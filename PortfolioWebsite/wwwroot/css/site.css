@@ -57,6 +57,8 @@ span#headerName_text {
 a.nav-link {
    font-size: 30px;
    color: black;
+   margin-left: 10px;
+   margin-right: 10px;
 }
 
 #headerName {
@@ -210,18 +212,20 @@ span.eduGrad {
 
 /*PROJECTS*/
 
-div#RepoRow {
-
-}
-
-div.repo {
+div#repo {
     display: block;
     text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: 2in;
     width: 3.5in;
     padding: 30px;
     margin: 20px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
+    transition: box-shadow 2s ease;
+}
+
+div#repo:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 h3.repo {
@@ -235,6 +239,7 @@ p.repo {
 .Lang_icon {
     color: black;
     text-decoration: none;
+    padding-right: 10px;
 }
 
 /*Contact Page*/

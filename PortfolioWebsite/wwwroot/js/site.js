@@ -42,7 +42,11 @@ $(document).ready(function () {
     }
 })
 
-//Resume Fade in
+//Projects Clickable
+$(".col").click(function () {
+    var target_url = $(this).find("a").attr("href");
+    window.open(target_url, "_blank");
+});
 
 
 
