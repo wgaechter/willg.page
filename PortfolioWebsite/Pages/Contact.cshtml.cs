@@ -3,6 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using Google.Apis.Gmail;
+
+//SMTP GOOGLE DOCS: https://developers.google.com/gmail/api/guides/sending 
+//https://stackoverflow.com/questions/73482823/how-to-start-with-the-google-api-for-gmail
+//https://www.daimto.com/how-to-access-gmail-with-c-net/
 
 namespace PortfolioWebsite.Pages
 {
@@ -30,13 +35,15 @@ namespace PortfolioWebsite.Pages
             string userName = this.Configuration.GetValue<string>("Smtp:UserName");
             string password = this.Configuration.GetValue<string>("Smtp:Password");
 
-            using (MailMessage mm = new MailMessage(fromAddress, "admin@aspsnippets.com"))
+            string domain = this.Configuration.GetValue<string>("Smtp:Domain");
+
+            using (MailMessage mm = new MailMessage(fromAddress, userName))
             {
                 mm.Subject = model.Subject;
                 mm.Body = "Name: " + model.Name + "<br /><br />Company: " + model.Company + "<br /><br />Email: " + model.Email + "<br />" + model.Body;
                 mm.IsBodyHtml = true;
 
-                if (model.Attachment.Length > 0)
+                if (model.Attachment != null)
                 {
                     string fileName = Path.GetFileName(model.Attachment.FileName);
                     mm.Attachments.Add(new Attachment(model.Attachment.OpenReadStream(), fileName));
@@ -46,12 +53,18 @@ namespace PortfolioWebsite.Pages
                 {
                     smtp.Host = host;
                     smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = false;
                     NetworkCredential NetworkCred = new NetworkCredential(userName, password);
-                    smtp.UseDefaultCredentials = true;
+                    NetworkCred.Domain = domain;
                     smtp.Credentials = NetworkCred;
                     smtp.Port = port;
-                    smtp.Send(mm);
-                    this.Message = "Email sent sucessfully.";
+                    
+                    try
+                    {
+                        smtp.Send(mm);
+                        this.Message = "Email sent sucessfully.";
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex.Message); }
                 }
             }
         }
