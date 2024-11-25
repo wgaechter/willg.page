@@ -11,16 +11,21 @@ namespace PortfolioWebsite.Pages
 {
     public class ProjectsModel : PageModel
     {
+        private readonly IConfiguration _configuration;
+        public string api_key { get; private set; }
         private readonly GitHubClient _client;
 
-        public ProjectsModel()
+        public ProjectsModel(IConfiguration configuration)
         {
-            _client = EstablishClient();
+            _configuration = configuration;
+            api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
+            _client = EstablishClient(api_key);
         }
-
-        public GitHubClient EstablishClient()
+        public GitHubClient EstablishClient(string api_key)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue("PortfolioWebsite"));
+            client.Credentials = new Credentials(api_key);
+
             return client;
         }
 
@@ -64,7 +69,7 @@ namespace PortfolioWebsite.Pages
         }
 
         public Dictionary<string, string> _language_icons = new Dictionary<string, string>
-                {
+        {
                     { "Git", "<i class='devicon-git-plain' style='color: #555'></i>" },
                     { "Github", "<i class='devicon-github-plain' style='color: #1688f0'></i>" },
                     { "Chrome", "<i class='devicon-chrome-plain' style='color: #1688f0'></i>" },
@@ -117,9 +122,6 @@ namespace PortfolioWebsite.Pages
                     { "TypeScript", "<i class='devicon-typescript-plain colored'></i> TypeScript" },
                     { "Vim Script", "<i class='devicon-vim-plain colored'></i> Vim Script" },
                     { "Vue", "<i class='devicon-vuejs-plain colored'></i> Vue" }
-                };
-
-
-}
-
+        };
+    }
 }
