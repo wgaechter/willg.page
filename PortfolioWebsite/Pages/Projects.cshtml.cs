@@ -1,67 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.Sqlite;
 using Octokit;
+using PortfolioWebsite.Models;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Xml.Serialization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Google.Apis.Gmail.v1.Data;
 
 namespace PortfolioWebsite.Pages
 {
     public class ProjectsModel : PageModel
     {
-        private readonly IConfiguration _configuration;
-        public string api_key { get; private set; }
-        private readonly GitHubClient _client;
+        public List<RepoModel> _projects;
+        private readonly SQLiteContext _context;
 
-        public ProjectsModel(IConfiguration configuration)
+        public ProjectsModel(SQLiteContext context)
         {
-            _configuration = configuration;
-            api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
-            _client = EstablishClient(api_key);
+            _context = context;
+            _projects = GetProjects();
         }
 
-        public GitHubClient EstablishClient(string api_key)
+        //Local pull used to source _projects list
+        public List<RepoModel> GetProjects()
         {
-            GitHubClient client = new GitHubClient(new ProductHeaderValue("PortfolioWebsite"));
-            client.Credentials = new Credentials(api_key);
-
-            return client;
-        }
-
-        public async Task<List<Repository>> GetPublicRepos()
-        {
-            try
-            {
-                IReadOnlyCollection<Repository> repos = await _client.Repository.GetAllForUser("wgaechter");
-                //Repos is filled now, parse and create in page
-
-                List<Repository> raw_list = new List<Repository>(repos);
-                IOrderedEnumerable<Repository> repo_list = raw_list.OrderByDescending(r => r.UpdatedAt);
-
-                return repo_list.ToList();
-            }
-            catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); return null; };
-        }
-
-        public async Task<Dictionary<string, IReadOnlyList<RepositoryLanguage>>> getAllLanguagesForRepo(List<Repository> repositories)
-        {
-            Dictionary<string, IReadOnlyList<RepositoryLanguage>> allLaguagesForRepos = new Dictionary<string, IReadOnlyList<RepositoryLanguage>>();
-            try {
-                foreach (Repository repo in repositories)
-                {
-                    var languages = await _client.Repository.GetAllLanguages("wgaechter", repo.Name);
-
-                    allLaguagesForRepos.Add(repo.Name, languages);
-                }
-
-                return allLaguagesForRepos;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Message); return null;
-            }
+            List<RepoModel> repositories = new List<RepoModel>();
+            repositories =  _context.Projects.OrderByDescending(r => r.LastUpdated).ToList();
+            return repositories;
         }
 
         public void OnGet()
