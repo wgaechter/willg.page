@@ -29,7 +29,7 @@ namespace PortfolioWebsite.Pages
         public List<RepoModel> GetProjects()
         {
             List<RepoModel> repositories = new List<RepoModel>();
-            repositories =  _context.Projects.ToList();
+            repositories =  _context.Projects.OrderByDescending(r => r.LastUpdated).ToList();
             return repositories;
         }
 

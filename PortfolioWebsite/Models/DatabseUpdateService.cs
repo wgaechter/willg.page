@@ -72,6 +72,7 @@ public class DatabaseUpdateService : IDatabaseUpdateService
                 existingRepo.Description = repo.Description;
                 existingRepo.LanguageString = repo.LanguageString;
                 existingRepo.HtmlUrl = repo.HtmlUrl;
+                existingRepo.LastUpdated = repo.LastUpdated;
 
                 _context.Projects.Update(existingRepo);
             }
@@ -94,6 +95,7 @@ public class DatabaseUpdateService : IDatabaseUpdateService
             string name = repo.Name;
             string desc = repo.Description;
             string htmlUrl = repo.HtmlUrl;
+            long lastUpdated = repo.UpdatedAt.DateTime.Ticks;
 
             List<string> languageList = new List<string>();
             string languageString = "";
@@ -108,7 +110,7 @@ public class DatabaseUpdateService : IDatabaseUpdateService
                 languageString = string.Join(", ", languageList.ToArray());
             }
 
-            RepoModel repoModel = new RepoModel(id, name, desc, languageString, htmlUrl);
+            RepoModel repoModel = new RepoModel(id, name, desc, languageString, htmlUrl, lastUpdated);
 
             RepoModels.Add(repoModel);
         }

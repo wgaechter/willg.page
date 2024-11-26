@@ -230,8 +230,11 @@ span.eduGrad {
 
 /*PROJECTS*/
 
-div.row {
+div.projectsWrapper {
     justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 div.repoHolder {

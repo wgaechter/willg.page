@@ -13,14 +13,21 @@ namespace PortfolioWebsite.Models
         public string? Description { get; set; }
         public string? LanguageString { get; set; }
         public string HtmlUrl { get; set; }
+        public long LastUpdated { get; set; }
 
-        public RepoModel(long projectId, string name, string description, string languageString, string htmlUrl)
+        public RepoModel(long projectId, string name, string description, string languageString, string htmlUrl, long lastUpdated)
         {
             ProjectId = projectId;
             Name = name;
             Description = description;
             LanguageString = languageString;
             HtmlUrl = htmlUrl;
+            LastUpdated = lastUpdated;
+        }
+
+        internal RepoModel()
+        {
+
         }
 
         protected void OnModelCreating(ModelBuilder modelBuilder)
