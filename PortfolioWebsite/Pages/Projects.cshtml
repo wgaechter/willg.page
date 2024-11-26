@@ -3,33 +3,26 @@
 @inject IJSRuntime JS;
 @model PortfolioWebsite.Pages.ProjectsModel
 
-@{
-    ViewData["Title"] = "Projects";
-}
+@{ ViewData["Title"] = "Projects"; }
 
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
     
     //https://www.c-sharpcorner.com/article/working-with-sql-lite-database-in-asp-net-core-web-api/
 
-    int rows_needed = 0;
-    int repo_length = 0;
-
     List<Octokit.Repository> repositories = Model.GetPublicRepos().Result;
 
     if (repositories != null)
     {
-        repo_length = repositories.Count;
-        rows_needed = rows_needed % 3;
+        int repo_length = repositories.Count;
 
         Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = Model.getAllLanguagesForRepo(repositories).Result;
 
         for (int i = 0; i < repo_length;)
         {
-            <div class="row" id="RepoRow_@i">
+            <div class="row" id="RepoRow@(i / 3)">
                 @for (int k = 0; k < 3; k++)
                 {
-                    long repo_id = repositories.ElementAt(i).Id;
                     string repo_name_backend = repositories.ElementAt(i).Name;
                     string repo_name_frontend = repo_name_backend.Replace("_", " ");
                     string repo_desc = repositories.ElementAt(i).Description;
@@ -58,12 +51,20 @@
                                         }
                                     }
                             </div>
-                            <a href=@html_Url></a>
                         </div>
+                        <a href=@html_Url></a>
                     </div>
 
-                    //Adds to i in the initial loop for the rows.  I will increase by 3 each loop when it returns to represent the 3 projects that are placed in each row.
-                    i++;
+                    //Adds to i in the initial loop for the rows.  i will increase by 3 each loop when it returns to represent the 3 projects that are placed in each row.
+                    if ((i + 1) == repo_length) //Checks if all projects have been rendered, if yes break, if no continue
+                    {
+                        i++;
+                        break;
+                    }
+                    else
+                    {
+                        i++;
+                    }
                 }
             </div>
         }

@@ -9,7 +9,7 @@ $(window).ready(function () {
     $("div[class='repoHolder']").each(function (index) {
         console.log($(this).attr('id'));
 
-        $(this).delay((index + 1) * delay).fadeTo(5000, 1);
+        $(this).delay((index + 1) * delay).fadeTo(2500, 1);
     });
 });
 
