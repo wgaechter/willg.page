@@ -21,6 +21,7 @@ namespace PortfolioWebsite.Pages
             api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
             _client = EstablishClient(api_key);
         }
+
         public GitHubClient EstablishClient(string api_key)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue("PortfolioWebsite"));
