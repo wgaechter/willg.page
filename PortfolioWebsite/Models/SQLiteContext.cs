@@ -8,8 +8,4 @@ namespace PortfolioWebsite.Models
         public DbSet<RepoModel> Projects { get; set; }
         public DbSet<ArticleModel> Articles { get; set; }
     }
-
-
-
-
 }

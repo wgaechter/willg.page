@@ -10,8 +10,8 @@ namespace PortfolioWebsite.Models
         [Key]
         public long ProjectId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string LanguageString { get; set; }
+        public string? Description { get; set; }
+        public string? LanguageString { get; set; }
         public string HtmlUrl { get; set; }
 
         public RepoModel(long projectId, string name, string description, string languageString, string htmlUrl)

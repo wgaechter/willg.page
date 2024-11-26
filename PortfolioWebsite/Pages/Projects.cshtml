@@ -12,7 +12,7 @@
 
     //https://www.c-sharpcorner.com/article/working-with-sql-lite-database-in-asp-net-core-web-api/
 
-    List<Models.RepoModel> repositories = Model.DBRepoPullAsync().Result;
+    List<Models.RepoModel> repositories = Model._projects;
 
     if (repositories != null)
     {
