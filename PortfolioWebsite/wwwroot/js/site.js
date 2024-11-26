@@ -6,9 +6,10 @@
 // /Projects Div Fade in function.  working but not well, needs tweaks and better fireing mech
 $(window).ready(function () {
     var delay = 500; // Delay in milliseconds 
-    $("div[class='repo']").each(function (index) {
-        $(this).hide().delay(index * delay).fadeIn(500);
-        console.log("Fading in");
+    $("div[class='repoHolder']").each(function (index) {
+        console.log($(this).attr('id'));
+
+        $(this).delay((index + 1) * delay).fadeTo(5000, 1);
     });
 });
 

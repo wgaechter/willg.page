@@ -1,3 +1,11 @@
+:root {
+    --color_1: #fffff0; /*Ivory*/
+    --color_2: #99CC99; /*Green*/
+    --color_3: #CC3333; /*Red*/
+    --color_4: #336699; /*Blue*/
+    --color_5: #009999; /*Turquoise*/
+}
+
 html {
     font-size: 14px;
     font-family: Cambria, serif;
@@ -22,12 +30,18 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Cambria, serif;
-    background-color: #fffff0;
+    background-color: var(--color_1);
 }
 
 header {
-    background-color: #fffff0;
+    background-color: var(--color_1);
     margin-bottom: 30px;
+}
+
+footer {
+    border-top: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, var(--color_2) 0, var(--color_2) 33%, var(--color_4) 33%, var(--color_4) 66%, var(--color_3) 66%, var(--color_3) 100%);
 }
 
 h1 {
@@ -60,6 +74,10 @@ a.nav-link {
    margin-left: 10px;
    margin-right: 10px;
 }
+
+    a.nav-link:hover {
+        color: var(--color_4);
+    }
 
 #headerName {
     margin-top: 20px;
@@ -212,32 +230,67 @@ span.eduGrad {
 
 /*PROJECTS*/
 
-div#repo {
-    display: block;
+div.row {
+    justify-content: center;
+}
+
+div.repoHolder {
+    opacity: 0;
     text-align: center;
     height: 2in;
     width: 3.5in;
-    padding: 30px;
     margin: 20px;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
-    transition: box-shadow 2s ease;
+    position: relative;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-div#repo:hover {
+div.repo {
+    padding: 10px;
+    text-align: center;
+    height: 2in;
+    width: 3.5in;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
+    transition: box-shadow 1s ease;
+    position: relative;
+    background-color: rgba(255,255,240, 1);
+    background-clip: padding-box;
+    border: solid 4px transparent;
+    border-radius: 0.8rem;
+}
+
+div.repo:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -4px; /* same as border width */
+    border-radius: inherit; /* inherit container box's radius */
+    background: transparent;
+    background-image: linear-gradient(150deg, var(--color_2), var(--color_4));
+}
+
+
+div.repo:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 h3.repo {
-
+    margin-bottom: 12px;
 }
 
 p.repo {
-
+    height: 50px;
+    max-height: 50px;
 }
 
 .Lang_icon {
     color: black;
+    white-space: nowrap;
     text-decoration: none;
     padding-right: 10px;
 }

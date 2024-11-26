@@ -2,6 +2,11 @@
 @using Microsoft.JSInterop;
 @inject IJSRuntime JS;
 @model PortfolioWebsite.Pages.ProjectsModel
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
     
@@ -21,30 +26,40 @@
 
         for (int i = 0; i < repo_length;)
         {
-            <div class="row" id="RepoRow">
+            <div class="row" id="RepoRow_@i">
                 @for (int k = 0; k < 3; k++)
                 {
-                    <div class="col" id="repo">
-                            <h3 id="repo">@repositories.ElementAt(i).Name</h3>
-                            <p id="repo">@repositories.ElementAt(i).Description</p>
-                                @if (repo_languages.ContainsKey(repositories.ElementAt(i).Name))
+                    long repo_id = repositories.ElementAt(i).Id;
+                    string repo_name_backend = repositories.ElementAt(i).Name;
+                    string repo_name_frontend = repo_name_backend.Replace("_", " ");
+                    string repo_desc = repositories.ElementAt(i).Description;
+                    string html_Url = repositories.ElementAt(i).HtmlUrl;
+
+                    <div class="repoHolder">
+                        <div class="repo" id="@repo_name_backend">
+                            <h3 class="repo">@repo_name_frontend</h3>
+                            <p class="repo">@repo_desc</p>
+                            <div class="lang_container">
+                            @if (repo_languages.ContainsKey(repo_name_backend))
                                 {
-                                    IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repositories.ElementAt(i).Name];
-                                    foreach (Octokit.RepositoryLanguage lang in lang_list) 
-                                    {
-                                        if (lang != null)
+                                IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repo_name_backend];
+                                        foreach (Octokit.RepositoryLanguage lang in lang_list) 
                                         {
-                                            Model._language_icons.TryGetValue(lang.Name, out var icon);
-                                            <span class="Lang_icon">@Html.Raw(icon)</span>
-                                        }
-                                        else
-                                        {
-                                            //No lang in lang_list
-                                            <span>@repositories.ElementAt(i).Language</span>
+                                            if (lang != null)
+                                            {
+                                                Model._language_icons.TryGetValue(lang.Name, out var icon);
+                                                <span class="Lang_icon">@Html.Raw(icon)</span>
+                                            }
+                                            else
+                                            {
+                                                //No lang in lang_list
+                                                <span>@repositories.ElementAt(i).Language</span>
+                                            }
                                         }
                                     }
-                                }
-                        <a href=@repositories.ElementAt(i).HtmlUrl></a>
+                            </div>
+                            <a href=@html_Url></a>
+                        </div>
                     </div>
 
                     //Adds to i in the initial loop for the rows.  I will increase by 3 each loop when it returns to represent the 3 projects that are placed in each row.

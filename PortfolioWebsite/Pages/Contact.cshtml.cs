@@ -5,7 +5,8 @@ using System.Net;
 using System.Net.Mail;
 using Google.Apis.Gmail;
 
-//SMTP GOOGLE DOCS: https://developers.google.com/gmail/api/guides/sending 
+//SMTP GOOGLE DOCS:
+//https://developers.google.com/gmail/api/guides/sending 
 //https://stackoverflow.com/questions/73482823/how-to-start-with-the-google-api-for-gmail
 //https://www.daimto.com/how-to-access-gmail-with-c-net/
 
