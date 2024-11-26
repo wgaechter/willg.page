@@ -1,11 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Data.Sqlite;
 using Octokit;
+using PortfolioWebsite.Models;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Xml.Serialization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Google.Apis.Gmail.v1.Data;
 
 namespace PortfolioWebsite.Pages
 {
@@ -14,14 +19,20 @@ namespace PortfolioWebsite.Pages
         private readonly IConfiguration _configuration;
         public string api_key { get; private set; }
         private readonly GitHubClient _client;
+        private readonly SQLiteContext _context;
+        private readonly List<RepoModel> _projects;
 
-        public ProjectsModel(IConfiguration configuration)
+        public ProjectsModel(IConfiguration configuration, SQLiteContext context)
         {
             _configuration = configuration;
             api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
             _client = EstablishClient(api_key);
+
+            _context = context;
+            _projects = DBRepoPullAsync().Result;
         }
 
+        //Set up GitHub Client and Credentials for _client
         public GitHubClient EstablishClient(string api_key)
         {
             GitHubClient client = new GitHubClient(new ProductHeaderValue("PortfolioWebsite"));
@@ -30,6 +41,7 @@ namespace PortfolioWebsite.Pages
             return client;
         }
 
+        //API Call to Github to retreive all public repos for my account
         public async Task<List<Repository>> GetPublicRepos()
         {
             try
@@ -45,6 +57,7 @@ namespace PortfolioWebsite.Pages
             catch (Exception e) { System.Diagnostics.Debug.WriteLine(e.Message); return null; };
         }
 
+        //Enumerates through all pulled repos and retrieves all languages used in respective repo
         public async Task<Dictionary<string, IReadOnlyList<RepositoryLanguage>>> getAllLanguagesForRepo(List<Repository> repositories)
         {
             Dictionary<string, IReadOnlyList<RepositoryLanguage>> allLaguagesForRepos = new Dictionary<string, IReadOnlyList<RepositoryLanguage>>();
@@ -63,6 +76,93 @@ namespace PortfolioWebsite.Pages
                 System.Diagnostics.Debug.WriteLine(e.Message); return null;
             }
         }
+
+        //Single Method to call GitHub API and Push to update the SQLite DB - Run on each startup for now, change to every so often once working
+        public async Task DB_RepoPushAsync()
+        {
+            List<Repository> repositories = new List<Repository>();
+            Dictionary<string, IReadOnlyList<RepositoryLanguage>> repo_language_dict = new Dictionary<string, IReadOnlyList<RepositoryLanguage>>();
+            
+            repositories = this.GetPublicRepos().Result;
+            repo_language_dict = this.getAllLanguagesForRepo(repositories).Result;
+
+            await this.UpdateDB_ProjectsTable(repositories, repo_language_dict);
+        }
+
+        //Local pull used to source _projects list
+        public async Task<List<RepoModel>> DB_RepoPullAsync()
+        {
+            List<RepoModel> repositories = new List<RepoModel>();
+            repositories = await _context.Projects.ToListAsync();
+            return repositories;
+        }
+        
+        //Method for UpdateDB_ProjectsTable
+        //Actaul transaciton call for each repo in the list recovered
+        public async Task SendReposAsync(List<RepoModel> repos)
+        {
+            foreach (var repo in repos)
+            {
+                var existingRepo = await _context.Projects.FindAsync(repo.ProjectId);
+
+                if (existingRepo != null)
+                {
+                    existingRepo.Name = repo.Name;
+                    existingRepo.Description = repo.Description;
+                    existingRepo.LanguageString = repo.LanguageString;
+                    existingRepo.HtmlUrl = repo.HtmlUrl;
+
+                    _context.Projects.Update(existingRepo);
+                }
+                else
+                {
+                    //No project found by GithubID, instering new record
+                    await _context.Projects.AddAsync(repo);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+        }
+        
+        //Main Github -> DB Pipeline Method
+        //Requires GetPublicRepos() and getAllLanguagesForRepo() outputs to generate the models for matching/updating
+        public async Task UpdateDB_ProjectsTable(List<Repository> repositories, Dictionary<string, IReadOnlyList<RepositoryLanguage>> langDict)
+        {
+            try {
+                List<RepoModel> repo_model_list = new List<RepoModel>();
+
+                foreach (var repo in repositories)
+                {
+                    long id = repo.Id;
+                    string name = repo.Name;
+                    string desc = repo.Description;
+                    string htmlUrl = repo.HtmlUrl;
+
+                    List<string> languageList = new List<string>();
+                    string languageString = "";
+
+                    if (langDict.ContainsKey(name))
+                    {
+                        foreach (var lang in langDict[name])
+                        {
+                            languageList.Add(lang.Name);
+                        }
+
+                        languageString = String.Join(", ", languageList.ToArray());
+                    }
+
+                    RepoModel repoModel = new RepoModel(id, name, desc, languageString, htmlUrl);
+
+                    repo_model_list.Add(repoModel);
+                }
+
+                //SQLiteDB Transaction
+                try { await SendReposAsync(repo_model_list); } catch (Exception e) { Console.WriteLine(e.Message); }
+
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+        }
+
 
         public void OnGet()
         {

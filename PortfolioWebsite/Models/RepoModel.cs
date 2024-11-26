@@ -1,27 +1,31 @@
-﻿using System.Reflection.Metadata;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata;
+using Microsoft.EntityFrameworkCore;
 using Octokit;
 
 namespace PortfolioWebsite.Models
 {
     public class RepoModel
     {
-        public int Id { get; set; }
-        public long GithubId { get; set; }
+        [Key]
+        public long ProjectId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IReadOnlyList<RepositoryLanguage> LanguageList { get; set; }
-        public string LanguageListBlob { get; set; }
+        public string LanguageString { get; set; }
         public string HtmlUrl { get; set; }
 
-        public RepoModel(int id, long githubId, string name, string description, IReadOnlyList<RepositoryLanguage> languageList, string languageListBlob, string htmlUrl)
+        public RepoModel(long projectId, string name, string description, string languageString, string htmlUrl)
         {
-            Id = id;
-            GithubId = githubId;
+            ProjectId = projectId;
             Name = name;
             Description = description;
-            LanguageList = languageList;
-            LanguageListBlob = languageListBlob;
+            LanguageString = languageString;
             HtmlUrl = htmlUrl;
+        }
+
+        protected void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RepoModel>().HasKey(e => e.ProjectId); // Explicitly setting the primary key }
         }
     }
 }

@@ -3,53 +3,58 @@
 @inject IJSRuntime JS;
 @model PortfolioWebsite.Pages.ProjectsModel
 
-@{ ViewData["Title"] = "Projects"; }
+@{
+    ViewData["Title"] = "Projects";
+}
 
 @{
     //https://dev.to/2kabhishek/i-made-a-web-app-to-showcase-all-your-github-projects-le3
-    
+
     //https://www.c-sharpcorner.com/article/working-with-sql-lite-database-in-asp-net-core-web-api/
 
-    List<Octokit.Repository> repositories = Model.GetPublicRepos().Result;
+    List<Models.RepoModel> repositories = Model.DBRepoPullAsync().Result;
 
     if (repositories != null)
     {
         int repo_length = repositories.Count;
+        int i = 0;
 
-        Dictionary<string, IReadOnlyList<Octokit.RepositoryLanguage>> repo_languages = Model.getAllLanguagesForRepo(repositories).Result;
-
-        for (int i = 0; i < repo_length;)
+        foreach (var repo in repositories)
         {
             <div class="row" id="RepoRow@(i / 3)">
                 @for (int k = 0; k < 3; k++)
                 {
-                    string repo_name_backend = repositories.ElementAt(i).Name;
+                    //Variables
+                    string repo_name_backend = repo.Name;
                     string repo_name_frontend = repo_name_backend.Replace("_", " ");
-                    string repo_desc = repositories.ElementAt(i).Description;
-                    string html_Url = repositories.ElementAt(i).HtmlUrl;
+                    string repo_desc = repo.Description;
+                    string html_Url = repo.HtmlUrl;
 
+                    string languageString = repo.LanguageString;
+                    List<string> languageList = languageString.Split(',').ToList();
+
+                    //Div Generation
                     <div class="repoHolder">
                         <div class="repo" id="@repo_name_backend">
                             <h3 class="repo">@repo_name_frontend</h3>
                             <p class="repo">@repo_desc</p>
                             <div class="lang_container">
-                            @if (repo_languages.ContainsKey(repo_name_backend))
+                                @if (languageList != null)
                                 {
-                                IReadOnlyList<Octokit.RepositoryLanguage> lang_list = repo_languages[repo_name_backend];
-                                        foreach (Octokit.RepositoryLanguage lang in lang_list) 
+                                    foreach (var lang in languageList)
+                                    {
+                                        if (Model._language_icons.ContainsKey(lang))
                                         {
-                                            if (lang != null)
-                                            {
-                                                Model._language_icons.TryGetValue(lang.Name, out var icon);
-                                                <span class="Lang_icon">@Html.Raw(icon)</span>
-                                            }
-                                            else
-                                            {
-                                                //No lang in lang_list
-                                                <span>@repositories.ElementAt(i).Language</span>
-                                            }
+                                            Model._language_icons.TryGetValue(lang, out var icon);
+                                            <span class="Lang_icon">@Html.Raw(icon)</span>
+                                        }
+                                        else
+                                        {
+                                            //No lang in lang_list
+                                            <span>@lang</span>
                                         }
                                     }
+                                }
                             </div>
                         </div>
                         <a href=@html_Url></a>
