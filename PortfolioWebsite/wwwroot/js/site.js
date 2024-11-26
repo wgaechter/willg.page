@@ -44,7 +44,7 @@ $(document).ready(function () {
 })
 
 //Projects Clickable
-$(".col").click(function () {
+$(".repoHolder").click(function () {
     var target_url = $(this).find("a").attr("href");
     window.open(target_url, "_blank");
 });
