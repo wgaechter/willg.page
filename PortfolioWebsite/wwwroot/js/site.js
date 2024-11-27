@@ -9,7 +9,7 @@ $(window).ready(function () {
     $("div[class='repoHolder']").each(function (index) {
         console.log($(this).attr('id'));
 
-        $(this).delay((index + 1) * delay).fadeTo(2500, 1);
+        $(this).delay((index + 1) * delay).fadeTo(1500, 1);
     });
 });
 
@@ -48,6 +48,12 @@ $(".repoHolder").click(function () {
     var target_url = $(this).find("a").attr("href");
     window.open(target_url, "_blank");
 });
+
+//Articles Shift
+//Get All articles
+//Shift animate all divs down off screen
+//Shift generated article onto screen with full content w/ return button
+
 
 
 

@@ -110,6 +110,86 @@ p.Linebreak {
     color: black;
 }
 
+/*Index Page*/
+
+.article {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.article:hover {
+    -webkit-transform: translate(0px, -5px);
+    -ms-transform: translate(10px, -10px);
+    transform: translate(10px, -10px);
+    -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.articleImg {
+    width: 100%;
+    height: auto;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.Title {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.Subtitle {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #666;
+    padding-left: 25px;
+}
+
+.Content {
+    flex-grow: 1;
+    position: relative;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+    .Content:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    }
+
+.btn-primary {
+    align-self: flex-start;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+
 /*Technical Skills*/
 
 p.TechnicalSkills_ListHeader {

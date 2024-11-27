@@ -2,11 +2,39 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    List<Models.ArticleModel> articles = Model._articles;
 }
 
-<div class="text-center">
+<div class="text-center" id="WelcomeHeader">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+@{
+    //Welcome bar with a basic welcome and overview
 
+    //Scroll down to the article tiles with a good templated one that matches the vibe
+    ////https://codepen.io/marhdev/pen/bdXeqQ
+    ////https://codepen.io/tterb/pen/KoNzXw
+    //
+    //https://www.learnrazorpages.com/razor-pages/forms
+
+    //On click of article, get the rest of the info from the database and generate the html to glide up on screen
+    ////Article setup programatically based on text size/amount of paragraphs
+    ////3 Images per, one Thumbnail and 2 content worthy, one should be stock-like flavor
+    <div class="ArticleContainer">
+        @foreach (var a in articles)
+        {
+        <!-- Card -->
+            <article class="article" id=@a.ArticleId>
+                        <img class="articleImg" id="img_@a.ArticleId" src="https://placehold.co/600x400/EEE/31343C"/>
+                <div class="info-block">
+                    <h4 class="Title">@a.Title</h4>
+                    <h6 class="Subtitle">@a.Subtitle</h6>
+                    <p class="Content">@a.Content</p>
+                    <a href="#" class="btn btn-primary">Read more...</a>
+                </div>
+            </article>
+        }
+    </div>
+}

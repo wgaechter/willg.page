@@ -1,0 +1,31 @@
+﻿@page
+@model PortfolioWebsite.Pages.NewArticleFormModel
+
+@{ 
+    //https://freefrontend.com/css-blog-cards/
+    //https://codepen.io/marhdev/pen/bdXeqQ
+}
+
+@{
+    <form asp-action="" asp-controller="NewArticleForm" method="post"> 
+        <div> 
+            <label for="Title">Title</label> 
+            <input type="text" id="Title" name="Title" required />
+        </div> 
+        <div> 
+            <label for="Subtitle">Subtitle</label> 
+            <input type="text" id="Subtitle" name="Subtitle" required /> 
+        </div> 
+        <div> 
+            <label for="Content">Content</label> 
+            <textarea id="Content" name="Content" required></textarea> 
+        </div> 
+        <div> 
+            <label for="ImgLoc">Image Location</label> 
+            <input type="text" id="ImgLoc" name="ImgLoc" /> 
+        </div> 
+        
+        <button type="submit">Submit</button> 
+    </form>
+}
+
