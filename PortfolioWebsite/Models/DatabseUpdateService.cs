@@ -10,7 +10,6 @@ public interface IDatabaseUpdateService {
 public class DatabaseUpdateService : IDatabaseUpdateService
 {
     private readonly SQLiteContext _context;
-
     private readonly IConfiguration _configuration;
     private readonly GitHubClient _githubClient;
     public string api_key { get; private set; }
@@ -19,7 +18,6 @@ public class DatabaseUpdateService : IDatabaseUpdateService
     public DatabaseUpdateService(SQLiteContext context, IConfiguration configuration)
     {
         _context = context;
-
         _configuration = configuration;
         api_key = Environment.GetEnvironmentVariable("GITHUB_API_KEY") ?? throw new InvalidOperationException("API Key not found in environment variables.");
         _githubClient = EstablishClient(api_key);
@@ -116,5 +114,25 @@ public class DatabaseUpdateService : IDatabaseUpdateService
         }
 
         return RepoModels;
+    }
+
+    public async Task SendNewArticleAsync(ArticleModel newArticle)
+    {
+        var existingArticle = await _context.Articles.FindAsync(newArticle.Title);
+
+        if (existingArticle != null)
+        {
+            existingArticle.Title = newArticle.Title;
+            existingArticle.Subtitle = newArticle.Subtitle;
+            existingArticle.Content = newArticle.Content;
+
+            _context.Articles.Update(existingArticle);
+        }
+        else
+        {
+            await _context.Articles.AddAsync(newArticle);
+        }
+
+        await _context.SaveChangesAsync();
     }
 }

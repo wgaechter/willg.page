@@ -49,6 +49,12 @@ $(".repoHolder").click(function () {
     window.open(target_url, "_blank");
 });
 
+//Articles Shift
+//Get All articles
+//Shift animate all divs down off screen
+//Shift generated article onto screen with full content w/ return button
+
+
 
 
 
