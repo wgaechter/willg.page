@@ -9,6 +9,12 @@ $(window).ready(function () {
     $("div[class='repoHolder']").each(function (index) {
         console.log($(this).attr('id'));
 
+        // Get the color of the icon inside .cornerIcon and set it as the border color
+        var icon = $(this).find("div.cornerIcon > i");
+        var iconColor = icon.css("color");
+        $(this).find("div.cornerIcon").css("border-color", iconColor);
+
+        // Fade in each repoHolder with a delay
         $(this).delay((index + 1) * delay).fadeTo(1500, 1);
     });
 });
