@@ -12,28 +12,61 @@
 
     //https://www.c-sharpcorner.com/article/working-with-sql-lite-database-in-asp-net-core-web-api/
 
+    //https://codepen.io/alvaromontoro/pen/ebPEWb
+
     List<Models.RepoModel> repositories = Model._projects;
 
     if (repositories != null)
     {
-        int repo_length = repositories.Count;
-        int i = 0;
-
         <div class="projectsWrapper">
             @foreach (var repo in repositories)
             {
                 //Variables
                 string repo_name_backend = repo.Name;
                 string repo_name_frontend = repo_name_backend.Replace("_", " ");
-                string repo_desc = repo.Description;
+                string? repo_desc = repo.Description;
                 string html_Url = repo.HtmlUrl;
 
                 string languageString = repo.LanguageString;
                 List<string> languageList = languageString.Split(',').Select(l => l.Trim()).ToList();
+                string mainLang = String.Empty;
+
+                if (languageList.First() == "HTML" | languageList.First() == "Jupyter Notebook")
+                {
+                    try
+                    {
+                        mainLang = languageList.ElementAt(1);
+                    }
+                    catch
+                    {
+                        mainLang = languageList.First();
+                    }
+
+                }
+                else
+                {
+                    mainLang = languageList.First();
+                }
 
                 //Div Generation
                 <div class="repoHolder">
                     <div class="repo" id="@repo_name_backend">
+                        <div class="cornerIcon">
+                        @if (mainLang != null) //Corner Icon
+                        {
+                            Model._language_icons.TryGetValue(mainLang, out var mainLang_icon);
+                            if (mainLang_icon != null)
+                            {
+                                int index = mainLang_icon.LastIndexOf(">");
+                                if (index >= 0)
+                                {
+                                    mainLang_icon = mainLang_icon.Substring(0, (index + 1));
+                                }
+
+                                @Html.Raw(mainLang_icon)
+                            }
+                        }
+                        </div>
                         <h3 class="repo">@repo_name_frontend</h3>
                         <p class="repo">@repo_desc</p>
                         <div class="lang_container">
