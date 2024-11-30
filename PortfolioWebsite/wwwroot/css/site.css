@@ -370,10 +370,28 @@ div.repo:hover {
 }
 
 .cornerIcon {
-    font-size: 46px;
+    position: relative;
+    display: inline-block;
+    font-size: 36px;
 }
 
-h3.repo {
+    .cornerIcon::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 100%;
+        height: 100%;
+        border: 4px solid currentColor;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+icon {
+    color: inherit; /* This ensures that the icon takes the color of its parent */
+}
+
+h3 .repo {
     margin-bottom: 12px;
 }
 
