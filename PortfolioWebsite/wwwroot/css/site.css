@@ -139,6 +139,7 @@ p.Linebreak {
     transform: translate(0px, -5px);
     -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
 }
 
 .articleImg {
@@ -317,94 +318,79 @@ span.eduGrad {
 
 /*PROJECTS*/
 
-div.projectsWrapper {
+.projectsWrapper {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 40px; /* Adjust as necessary */
 }
 
-div.repoHolder {
-    opacity: 0;
-    text-align: center;
-    height: 2in;
-    width: 3.5in;
-    margin: 20px;
-    position: relative;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-div.repo {
+.repoHolder {
+    width: 300px; /* Adjust as necessary */
+    height: 200px;
+    border: 1px solid #ddd;
     padding: 10px;
-    text-align: center;
-    height: 2in;
-    width: 3.5in;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 5px;
-    transition: box-shadow 1s ease;
     position: relative;
-    background-color: rgba(255,255,240, 1);
-    background-clip: padding-box;
-    border: solid 4px transparent;
-    border-radius: 0.8rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-div.repo:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: -4px; /* same as border width */
-    border-radius: inherit; /* inherit container box's radius */
-    background: transparent;
-    background-image: linear-gradient(150deg, var(--color_2), var(--color_4));
-}
-
-
-div.repo:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.cornerIcon {
-    position: relative;
-    display: inline-block;
-    font-size: 36px;
-}
-
-    .cornerIcon::before {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: -4px;
-        width: 100%;
-        height: 100%;
-        border: 4px solid currentColor;
-        border-radius: 50%;
-        box-sizing: border-box;
+    .repoHolder:hover {
+        -webkit-transform: translate(0px, -5px);
+        -ms-transform: translate(0px, -5px);
+        transform: translate(0px, -5px);
+        -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
     }
 
-icon {
-    color: inherit; /* This ensures that the icon takes the color of its parent */
+.cornerIcon {
+    position: absolute;
+    top: -12px;
+    left: -15px;
+    font-size: 36px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid currentColor;
+    background-color: #fff; /* Optional: Background color for contrast */
+    
 }
 
-h3 .repo {
-    margin-bottom: 12px;
+    .cornerIcon svg {
+        color: inherit; /* Ensures the icon takes the parent's color */
+        width: 36px; /* Adjust as necessary */
+        height: 36px; /* Adjust as necessary */
+        z-index: 1;
+    }
+
+h3.repo  {
+    padding-left: 36px;
 }
 
 p.repo {
-    height: 50px;
-    max-height: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    height: 91px;
+}
+
+.lang_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px; /* Adjust as necessary */
 }
 
 .Lang_icon {
-    color: black;
-    white-space: nowrap;
-    text-decoration: none;
-    padding-right: 10px;
+    margin: 0 5px; /* Adjust spacing between icons as necessary */
+    font-size: 24px;
 }
 
 /*Contact Page*/
