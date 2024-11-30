@@ -112,8 +112,15 @@ p.Linebreak {
 
 /*Index Page*/
 
+.ArticleContainer {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
 .article {
-    display: flex;
+    display: grid;
     flex-direction: column;
     width: 100%;
     max-width: 600px;
@@ -128,8 +135,8 @@ p.Linebreak {
 
 .article:hover {
     -webkit-transform: translate(0px, -5px);
-    -ms-transform: translate(10px, -10px);
-    transform: translate(10px, -10px);
+    -ms-transform: translate(0px, -5px);
+    transform: translate(0px, -5px);
     -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
@@ -137,24 +144,24 @@ p.Linebreak {
 .articleImg {
     width: 100%;
     height: auto;
+    object-fit: contain;
 }
 
 .info-block {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 15px;
 }
 
 .Title {
     font-size: 1.5em;
-    margin: 0;
+    margin: 0px;
 }
 
 .Subtitle {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 5px 0;
     color: #666;
-    padding-left: 25px;
 }
 
 .Content {
@@ -362,7 +369,29 @@ div.repo:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-h3.repo {
+.cornerIcon {
+    position: relative;
+    display: inline-block;
+    font-size: 36px;
+}
+
+    .cornerIcon::before {
+        content: "";
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 100%;
+        height: 100%;
+        border: 4px solid currentColor;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+icon {
+    color: inherit; /* This ensures that the icon takes the color of its parent */
+}
+
+h3 .repo {
     margin-bottom: 12px;
 }
 
@@ -392,3 +421,104 @@ textarea {
     text-align: center;
 }
 
+/*NewArticleForm*/
+
+/* Form Container */ form {
+    width: 50%;
+    max-width: 600px;
+    margin: 10 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: ivory;
+    background-image: url('https://www.publicdomainpictures.net/pictures/120000/nahled/ivory-paper.jpg'); /* Optional: Adds a paper texture background */
+    background-size: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: inherit; /* Uses the default font of the DOM */
+}
+    /* Form Group */
+
+    form div {
+        margin-bottom: 15px;
+    }
+    /* Form Labels */
+
+    form label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    /* Form Inputs */
+
+    form input[type="text"], form input[type="file"], form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: inherit; /* Uses the default font of the DOM */
+    }
+    /* Textarea */
+
+    form textarea {
+        height: 150px;
+    }
+    /* Submit Button */
+
+    form button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: inherit; /* Uses the default font of the DOM */
+    }
+
+        form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+div.DBarticles {
+    width: auto;
+}
+
+ul.DBarticles {
+    list-style-type: none;
+    padding: 0;
+}
+
+li.DBarticles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+    .buttons button {
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+.update-btn {
+    background-color: var(--color_4);
+    color: var(--color_4);
+}
+
+.delete-btn {
+    background-color: var(--color_3);
+    color: var(--color_3);
+}

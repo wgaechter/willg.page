@@ -4,10 +4,12 @@
 @{ 
     //https://freefrontend.com/css-blog-cards/
     //https://codepen.io/marhdev/pen/bdXeqQ
+
+    List<Models.ArticleModel> articles = Model._articles;
 }
 
 @{
-    <form asp-action="" asp-controller="NewArticleForm" method="post"> 
+    <form asp-action="" asp-controller="NewArticleForm" method="post" enctype="multipart/form-data"> 
         <div> 
             <label for="Title">Title</label> 
             <input type="text" id="Title" name="Title" required />
@@ -21,11 +23,32 @@
             <textarea id="Content" name="Content" required></textarea> 
         </div> 
         <div> 
-            <label for="ImgLoc">Image Location</label> 
-            <input type="text" id="ImgLoc" name="ImgLoc" /> 
+            <label for="ImgLoc">Image Upload(600x400)</label>
+            <input type="file" asp-for="Upload" />
         </div> 
         
         <button type="submit">Submit</button> 
     </form>
+
+    <div class="DBarticles">
+        <ul class="DBarticles"> 
+            @foreach (Models.ArticleModel a in articles)
+            {
+                <li class="DBarticles" id="@a.ArticleId">
+                    <span>@a.Title</span> 
+                    <div class="buttons">
+                        <form asp-page-handler="Update" method="post"> 
+                            <input type="hidden" name="article" value="@a.Title"/> 
+                            <button type="submit" class="update-btn">Update</button> 
+                        </form> 
+                        <form asp-page-handler="Delete" method="post"> 
+                            <input type="hidden" name="article" value="@a.Title"> 
+                            <button type="submit" class="delete-btn">Delete</button> 
+                        </form>
+                    </div> 
+                </li>
+            }
+        </ul>
+    </div>
 }
 
