@@ -13,6 +13,7 @@ $(window).ready(function () {
         var icon = $(this).find("div.cornerIcon > i");
         var iconColor = icon.css("color");
         $(this).find("div.cornerIcon").css("border-color", iconColor);
+        $(this).find("div.repoHolder").css("border-color", iconColor);
 
         // Fade in each repoHolder with a delay
         $(this).delay((index + 1) * delay).fadeTo(1500, 1);

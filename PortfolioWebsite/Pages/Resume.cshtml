@@ -168,14 +168,52 @@
         <span class="eduLocation">Minneapolis, MN</span>
     </strong>
 </h2>
-<!--Imagine Learning: Job Title-->
+<!--Minnesota: Job Title-->
 <strong>
     <span class="eduProgram">Bachelor of Science in Sport Management </span>
 </strong>
-<!--Imagine Learning: Job Description-->
+<!--Minnesota: Description-->
 <ul class="eduDescription">
     <li><span>Focused studies on fan loyalty and its development for professional sporting clubs</span></li>
 </ul>
-<!--Imagine Learning: Graduation-->
+<!--Minnesota: Graduation-->
 <span class="eduGrad">Graduated Spring 2018 – 3.2 GPA</span>
 <!---------------------------------------------------------------------------------------------------------->
+
+<div id="resumeDownload_container">
+    <button id="downloadResumeButton" class="download-resume" onclick="downloadResume()">
+        <div>
+            <div class="pencil"></div>
+            <div class="folder">
+                <div class="top">
+                    <svg viewBox="0 0 24 27">
+                        <path d="M1,0 L23,0 C23.5522847,-1.01453063e-16 24,0.44771525 24,1 L24,8.17157288 C24,8.70200585 23.7892863,9.21071368 23.4142136,9.58578644 L20.5857864,12.4142136 C20.2107137,12.7892863 20,13.2979941 20,13.8284271 L20,26 C20,26.5522847 19.5522847,27 19,27 L1,27 C0.44771525,27 6.76353751e-17,26.5522847 0,26 L0,1 C-6.76353751e-17,0.44771525 1.01453063e-16 1,0 Z"></path>
+                    </svg>
+                </div>
+                <div class="paper"></div>
+            </div>
+        </div>
+        Download Resume
+    </button>
+</div>
+
+<script>
+    function downloadResume() {
+        fetch('/Resume?handler=DownloadResume')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok.');
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'William J Gaechter - Resume - Website.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => alert('There was a problem downloading the file: ' + error.message));
+    }
+</script>
