@@ -1,9 +1,13 @@
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Gmail.v1;
+using Google.Apis.Gmail.v1.Data;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-using Google.Apis.Gmail;
 
 //SMTP GOOGLE DOCS:
 //https://developers.google.com/gmail/api/guides/sending 
@@ -15,6 +19,8 @@ namespace PortfolioWebsite.Pages
     public class ContactModel : PageModel
     {
         public string Message { get; set; }
+        static string[] Scopes = { GmailService.Scope.GmailSend, GmailService.Scope.GmailCompose };
+        static string ApplicationName = "willg-page";
 
         private IConfiguration Configuration;
         public ContactModel(IConfiguration _configuration)
@@ -22,21 +28,15 @@ namespace PortfolioWebsite.Pages
             Configuration = _configuration;
         }
 
-        public void OnGet()
-        {
-
-        }
-
         public void OnPostSubmit(PortfolioWebsite.Models.ContactFormModel model)
         {
             //Read SMTP settings from AppSettings.json.
             string host = this.Configuration.GetValue<string>("Smtp:Server");
             int port = this.Configuration.GetValue<int>("Smtp:Port");
-            string fromAddress = this.Configuration.GetValue<string>("Smtp:FromAddress");
             string userName = this.Configuration.GetValue<string>("Smtp:UserName");
-            string password = this.Configuration.GetValue<string>("Smtp:Password");
+            string password = this.Configuration.GetValue<string>("Smtp:appPassword");
 
-            string domain = this.Configuration.GetValue<string>("Smtp:Domain");
+            string fromAddress = model.Email;
 
             using (MailMessage mm = new MailMessage(fromAddress, userName))
             {
@@ -50,24 +50,27 @@ namespace PortfolioWebsite.Pages
                     mm.Attachments.Add(new Attachment(model.Attachment.OpenReadStream(), fileName));
                 }
 
-                using (SmtpClient smtp = new SmtpClient())
-                {
+                using (var smtp = new SmtpClient()) {
                     smtp.Host = host;
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    NetworkCredential NetworkCred = new NetworkCredential(userName, password);
-                    NetworkCred.Domain = domain;
-                    smtp.Credentials = NetworkCred;
                     smtp.Port = port;
-                    
+                    smtp.Credentials = new NetworkCredential(userName, password);
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.EnableSsl = true;
+
                     try
                     {
+                        /* Send method called below is what will send off our email 
+                         * unless an exception is thrown.
+                         */
                         smtp.Send(mm);
-                        this.Message = "Email sent sucessfully.";
                     }
-                    catch (Exception ex) { Console.WriteLine(ex.Message); }
+                    catch (SmtpException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
             }
+
         }
     }
 }

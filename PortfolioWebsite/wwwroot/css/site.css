@@ -606,6 +606,18 @@ p.repo {
 
 /*Contact Page*/
 
+#contactForm_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 50%;
+}
+
 td {
     padding: 10px;
 }
@@ -620,7 +632,8 @@ textarea {
 
 /*NewArticleForm*/
 
-/* Form Container */ form {
+/* Form Container */ 
+form {
     width: 50%;
     max-width: 600px;
     margin: 10 auto;
