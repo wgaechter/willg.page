@@ -8,47 +8,68 @@
     List<Models.ArticleModel> articles = Model._articles;
 }
 
-@{
-    <form asp-action="" asp-controller="NewArticleForm" method="post" enctype="multipart/form-data"> 
-        <div> 
-            <label for="Title">Title</label> 
+@if (Model.IsAuthenticated)
+{
+     <p style="text-align: center">Welcome, Will!</p>
+
+    <form id="NewArticleForm" asp-action="" asp-controller="NewArticleForm" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="Title">Title</label>
             <input type="text" id="Title" name="Title" required />
-        </div> 
-        <div> 
-            <label for="Subtitle">Subtitle</label> 
-            <input type="text" id="Subtitle" name="Subtitle" required /> 
-        </div> 
-        <div> 
-            <label for="Content">Content</label> 
-            <textarea id="Content" name="Content" required></textarea> 
-        </div> 
-        <div> 
+        </div>
+        <div>
+            <label for="Subtitle">Subtitle</label>
+            <input type="text" id="Subtitle" name="Subtitle" required />
+        </div>
+        <div>
+            <label for="Content">Content</label>
+            <textarea id="Content" name="Content" required></textarea>
+        </div>
+        <div>
             <label for="ImgLoc">Image Upload(600x400)</label>
             <input type="file" asp-for="Upload" />
-        </div> 
-        
-        <button type="submit">Submit</button> 
+        </div>
+
+        <button type="submit">Submit</button>
     </form>
 
     <div class="DBarticles">
-        <ul class="DBarticles"> 
+        <ul class="DBarticles">
             @foreach (Models.ArticleModel a in articles)
             {
                 <li class="DBarticles" id="@a.ArticleId">
-                    <span>@a.Title</span> 
+                    <span>@a.Title</span>
                     <div class="buttons">
-                        <form asp-page-handler="Update" method="post"> 
-                            <input type="hidden" name="article" value="@a.Title"/> 
-                            <button type="submit" class="update-btn">Update</button> 
-                        </form> 
-                        <form asp-page-handler="Delete" method="post"> 
-                            <input type="hidden" name="article" value="@a.Title"> 
-                            <button type="submit" class="delete-btn">Delete</button> 
+                        <form class="articleButtons" asp-page-handler="Update" method="post">
+                            <input type="hidden" name="article" value="@a.Title" />
+                            <button type="submit" class="update-btn">Update</button>
                         </form>
-                    </div> 
+                        <form class="articleButtons" asp-page-handler="Delete" method="post">
+                            <input type="hidden" name="article" value="@a.Title">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </div>
                 </li>
             }
         </ul>
     </div>
 }
-
+else
+{
+     <form method="post" asp-page-handler="Login">
+        <div id="loginUsername">
+            <label for="username">Username:</label> 
+             <input type="text" id="username" name="username" /> 
+         </div> 
+         <div id="loginPassword"> 
+             <label for="password">Password:</label> 
+             <input type="password" id="password" name="password" /> 
+         </div>
+         <button id="loginButton" type="submit">Login</button> 
+     </form> 
+     
+    @if (Model.LoginFailed)
+    {
+        <p style="color:red;">Invalid username or password.</p>
+    }          
+}

@@ -632,11 +632,11 @@ textarea {
 
 /*NewArticleForm*/
 
-/* Form Container */ 
-form {
+/* Form Container */
+#NewArticleForm {
     width: 50%;
-    max-width: 600px;
-    margin: 10 auto;
+    max-width: 1000px;
+    margin: 10px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -648,19 +648,19 @@ form {
 }
     /* Form Group */
 
-    form div {
+    #NewArticleForm div {
         margin-bottom: 15px;
     }
     /* Form Labels */
 
-    form label {
+    #NewArticleForm label {
         display: block;
         font-weight: bold;
         margin-bottom: 5px;
     }
     /* Form Inputs */
 
-    form input[type="text"], form input[type="file"], form textarea {
+    #NewArticleForm input[type="text"], form input[type="file"], form textarea {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -671,12 +671,12 @@ form {
     }
     /* Textarea */
 
-    form textarea {
+    #NewArticleForm textarea {
         height: 150px;
     }
     /* Submit Button */
 
-    form button[type="submit"] {
+    #NewArticleForm button[type="submit"] {
         width: 100%;
         padding: 10px;
         background-color: #4CAF50;
@@ -688,7 +688,7 @@ form {
         font-family: inherit; /* Uses the default font of the DOM */
     }
 
-        form button[type="submit"]:hover {
+        #NewArticleForm button[type="submit"]:hover {
             background-color: #45a049;
         }
 
@@ -718,17 +718,55 @@ li.DBarticles {
 }
 
     .buttons button {
-        border: none;
-        border-radius: 5px;
         cursor: pointer;
+        padding: 2px;
     }
+
+form.articleButtons {
+    padding: 2px;
+}
 
 .update-btn {
     background-color: var(--color_4);
-    color: var(--color_4);
+    color: black;
 }
 
 .delete-btn {
     background-color: var(--color_3);
-    color: var(--color_3);
+    color: black;
 }
+
+/*Login for New Article*/
+
+#loginUsername, #loginPassword {
+    margin-bottom: 15px;
+    font-family: Cambria, serif;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#loginButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    #loginButton:hover {
+        background-color: #45a049;
+    }
