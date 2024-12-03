@@ -318,9 +318,12 @@ span.eduGrad {
 
 /*Resume Download Button*/
 
-div#resumeDownload_container {
+#resumeDownload_container {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 20px;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 .download-resume {
