@@ -30,7 +30,8 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Cambria, serif;
-    background-image: linear-gradient(to top, #eacda3 0%, #fffff0 100%);
+    background: #8e9eab;
+    background: linear-gradient( to top, #8e9eab,#eef2f3 );
 }
 
 header {
