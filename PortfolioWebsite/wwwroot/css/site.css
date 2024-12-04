@@ -116,8 +116,101 @@ p.Linebreak {
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
+
+.article {
+    display: grid;
+    max-width: 400px;
+    max-height: 600px;
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    position: relative;
+    overflow: hidden;
+}
+
+    .article:before {
+        content: '';
+        position: absolute;
+        bottom: 0px; /* adjust this to fit the height of your button */
+        left: 0;
+        right: 0;
+        height: 150px; /* height of the gradient */
+        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+
+.content {
+    padding: 1.1rem;
+}
+
+.articleImg {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    background-color: ivory;
+}
+
+.info-block {
+    padding: 5px;
+}
+
+.Title {
+    font-size: 1.5em;
+    margin: 2px;
+    padding: 2px;
+}
+
+.Subtitle {
+    font-size: 1.2em;
+    margin: 5px 0;
+    color: #666;
+    margin: 2px;
+    padding: 2px;
+}
+
+.Content {
+    flex-grow: 1;
+    max-height: 150px;
+    margin: 2px;
+    padding: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a.btn {
+    display: inline-flex;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: #2563EB;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+    a.btn span {
+        transition: .3s ease;
+    }
+
+    a.btn:hover span {
+        transform: translateX(4px);
+    }
+
+
+/*
 
 .article {
     display: grid;
@@ -196,6 +289,8 @@ p.Linebreak {
     .btn-primary:hover {
         background-color: #0056b3;
     }
+
+*/
 
 
 /*Technical Skills*/
