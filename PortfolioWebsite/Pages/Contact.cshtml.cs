@@ -34,7 +34,7 @@ namespace PortfolioWebsite.Pages
             string host = this.Configuration.GetValue<string>("Smtp:Server");
             int port = this.Configuration.GetValue<int>("Smtp:Port");
             string userName = this.Configuration.GetValue<string>("Smtp:UserName");
-            string password = this.Configuration.GetValue<string>("Smtp:appPassword");
+            string password = this.Configuration.GetValue<string>("Smtp:Password");
 
             string fromAddress = model.Email;
 
@@ -42,7 +42,7 @@ namespace PortfolioWebsite.Pages
             {
                 mm.Subject = model.Subject;
                 mm.Body = "Name: " + model.Name + "<br /><br />Company: " + model.Company + "<br /><br />Email: " + model.Email + "<br />" + model.Body;
-                mm.IsBodyHtml = true;
+                mm.IsBodyHtml = false;
 
                 if (model.Attachment != null)
                 {

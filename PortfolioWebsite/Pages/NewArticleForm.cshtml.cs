@@ -18,16 +18,38 @@ namespace PortfolioWebsite.Pages
         private readonly IWebHostEnvironment _environment;
         public List<ArticleModel> _articles;
 
+        [BindProperty] public string Username { get; set; }
+        [BindProperty] public string Password { get; set; }
+        public bool IsAuthenticated { get; set; }
+        public bool LoginFailed { get; set; }
+
         public NewArticleFormModel(SQLiteContext context, IConfiguration configuration, IWebHostEnvironment environment)
         {
             _context = context;
             _configuration = configuration;
             _environment = environment;
             _articles = _context.Articles.OrderByDescending(r => r.DatePosted).ToList();
+
+            IsAuthenticated = false;
         }
 
         [BindProperty]
         public IFormFile Upload {  get; set; }
+
+        public void OnPostLogin() 
+        { 
+            var adminUsername = Environment.GetEnvironmentVariable("ADMIN_USER") ?? throw new InvalidOperationException("Username not found in environment variables.");
+            var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASS") ?? throw new InvalidOperationException("Password not found in environment variables.");
+
+            if (Username == adminUsername && Password == adminPassword) 
+            { 
+                IsAuthenticated = true; 
+            } 
+            else 
+            { 
+                LoginFailed = true; 
+            } 
+        }
 
         public async Task OnPostAsync()
         {
@@ -81,6 +103,7 @@ namespace PortfolioWebsite.Pages
 
         public void OnGet()
         {
+
         }
     }
 }

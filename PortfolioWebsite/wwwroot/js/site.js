@@ -57,12 +57,10 @@ $(".repoHolder").click(function () {
 });
 
 //Articles Shift
+//On Read More button click
+
 //Get All articles
 //Shift animate all divs down off screen
 //Shift generated article onto screen with full content w/ return button
-
-
-
-
 
 

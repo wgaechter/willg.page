@@ -116,8 +116,101 @@ p.Linebreak {
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
+
+.article {
+    display: grid;
+    max-width: 400px;
+    max-height: 600px;
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    position: relative;
+    overflow: hidden;
+}
+
+    .article:before {
+        content: '';
+        position: absolute;
+        bottom: 0px; /* adjust this to fit the height of your button */
+        left: 0;
+        right: 0;
+        height: 150px; /* height of the gradient */
+        background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+    }
+
+.content {
+    padding: 1.1rem;
+}
+
+.articleImg {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    background-color: ivory;
+}
+
+.info-block {
+    padding: 5px;
+}
+
+.Title {
+    font-size: 1.5em;
+    margin: 2px;
+    padding: 2px;
+}
+
+.Subtitle {
+    font-size: 1.2em;
+    margin: 5px 0;
+    color: #666;
+    margin: 2px;
+    padding: 2px;
+}
+
+.Content {
+    flex-grow: 1;
+    max-height: 150px;
+    margin: 2px;
+    padding: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a.btn {
+    display: inline-flex;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: #2563EB;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+    a.btn span {
+        transition: .3s ease;
+    }
+
+    a.btn:hover span {
+        transform: translateX(4px);
+    }
+
+
+/*
 
 .article {
     display: grid;
@@ -196,6 +289,8 @@ p.Linebreak {
     .btn-primary:hover {
         background-color: #0056b3;
     }
+
+*/
 
 
 /*Technical Skills*/
@@ -632,11 +727,11 @@ textarea {
 
 /*NewArticleForm*/
 
-/* Form Container */ 
-form {
+/* Form Container */
+#NewArticleForm {
     width: 50%;
-    max-width: 600px;
-    margin: 10 auto;
+    max-width: 1000px;
+    margin: 10px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -648,19 +743,19 @@ form {
 }
     /* Form Group */
 
-    form div {
+    #NewArticleForm div {
         margin-bottom: 15px;
     }
     /* Form Labels */
 
-    form label {
+    #NewArticleForm label {
         display: block;
         font-weight: bold;
         margin-bottom: 5px;
     }
     /* Form Inputs */
 
-    form input[type="text"], form input[type="file"], form textarea {
+    #NewArticleForm input[type="text"], form input[type="file"], form textarea {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -671,12 +766,12 @@ form {
     }
     /* Textarea */
 
-    form textarea {
+    #NewArticleForm textarea {
         height: 150px;
     }
     /* Submit Button */
 
-    form button[type="submit"] {
+    #NewArticleForm button[type="submit"] {
         width: 100%;
         padding: 10px;
         background-color: #4CAF50;
@@ -688,7 +783,7 @@ form {
         font-family: inherit; /* Uses the default font of the DOM */
     }
 
-        form button[type="submit"]:hover {
+        #NewArticleForm button[type="submit"]:hover {
             background-color: #45a049;
         }
 
@@ -718,17 +813,55 @@ li.DBarticles {
 }
 
     .buttons button {
-        border: none;
-        border-radius: 5px;
         cursor: pointer;
+        padding: 2px;
     }
+
+form.articleButtons {
+    padding: 2px;
+}
 
 .update-btn {
     background-color: var(--color_4);
-    color: var(--color_4);
+    color: black;
 }
 
 .delete-btn {
     background-color: var(--color_3);
-    color: var(--color_3);
+    color: black;
 }
+
+/*Login for New Article*/
+
+#loginUsername, #loginPassword {
+    margin-bottom: 15px;
+    font-family: Cambria, serif;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#loginButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    #loginButton:hover {
+        background-color: #45a049;
+    }
