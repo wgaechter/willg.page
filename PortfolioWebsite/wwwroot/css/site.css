@@ -30,11 +30,10 @@ html {
 body {
     margin-bottom: 60px;
     font-family: Cambria, serif;
-    background-color: var(--color_1);
+    background-image: linear-gradient(to top, #eacda3 0%, #fffff0 100%);
 }
 
 header {
-    background-color: var(--color_1);
     margin-bottom: 30px;
 }
 
@@ -42,6 +41,7 @@ footer {
     border-top: 5px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right, var(--color_2) 0, var(--color_2) 33%, var(--color_4) 33%, var(--color_4) 66%, var(--color_3) 66%, var(--color_3) 100%);
+    background-color: var(--color_1);
 }
 
 h1 {
@@ -119,6 +119,7 @@ p.Linebreak {
     gap: 15px;
     margin-top: 25px;
     margin-bottom: 25px;
+    opacity: 1;
 }
 
 .article {
@@ -182,7 +183,7 @@ p.Linebreak {
     text-overflow: ellipsis;
 }
 
-a.btn {
+a.readMore {
     display: inline-flex;
     color: #ffffff;
     font-size: 0.875rem;
@@ -195,106 +196,111 @@ a.btn {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-left: 10px;
     position: relative;
     z-index: 2;
+    text-decoration: none;
 }
 
-    a.btn span {
+    a.readMore:hover {
+        color: #ffffff;
+    }
+
+    a.readMore span {
         transition: .3s ease;
+        text-decoration: none;
     }
 
-    a.btn:hover span {
+    a.readMore:hover span {
         transform: translateX(4px);
+        color: #ffffff;
     }
 
+.fullArticleContainer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    margin-bottom: 0px;
+    display: none;
+}
 
-/*
-
-.article {
-    display: grid;
+.Full_article {
+    padding: 20px;
     flex-direction: column;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    align-items: center;
 }
 
-.article:hover {
-    -webkit-transform: translate(0px, -5px);
-    -ms-transform: translate(0px, -5px);
-    transform: translate(0px, -5px);
-    -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    cursor: pointer;
+.Full_Title {
+    justify-self: left;
+    font-size: 48px;
 }
 
-.articleImg {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.info-block {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-}
-
-.Title {
-    font-size: 1.5em;
-    margin: 0px;
-}
-
-.Subtitle {
-    font-size: 1.2em;
+.Full_Subtitle {
+    justify-self: left;
     margin: 5px 0;
     color: #666;
+
+    font-size: 24px;
 }
 
-.Content {
-    flex-grow: 1;
-    position: relative;
-    max-height: 150px;
-    overflow: hidden;
+.Full_articleImg {
+    max-width: 100%;
+    height: 300px;
+    margin: 10px;
+    float: right;
 }
 
-    .Content:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+.Full_info-block {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.returnButton {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 10px;
+}
+
+    .returnButton > svg {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 20px;
+        transition: all 0.4s ease-in;
     }
 
-.btn-primary {
-    align-self: flex-start;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-    .btn-primary:hover {
-        background-color: #0056b3;
+    .returnButton:hover > svg {
+        font-size: 1.2em;
+        transform: translateX(-5px);
     }
 
-*/
-
+    .returnButton:hover {
+        box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+        transform: translateY(-2px);
+    }
 
 /*Technical Skills*/
-
 p.TechnicalSkills_ListHeader {
     margin-top: 0in;
     margin-right: 0in;

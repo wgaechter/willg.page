@@ -62,5 +62,41 @@ $(".repoHolder").click(function () {
 //Get All articles
 //Shift animate all divs down off screen
 //Shift generated article onto screen with full content w/ return button
+$(".readMore").click(function () {
+    console.log("Read More clicked");
+    //Variables for article
+    var $article = $(this).closest(".article");
+    var title = $article.find(".Title").text();
+    var subtitle = $article.find(".Subtitle").text();
+    var content = $article.find(".Content").text();
+    var imgSrc = $article.find(".articleImg").attr("src");
+
+    console.log(title);
+    var $fullArticle = $(".fullArticleContainer");
+    $fullArticle.find(".Full_Title").text(title);
+    $fullArticle.find(".Full_Subtitle").text(subtitle);
+    $fullArticle.find(".Full_Content").text(content);
+    $fullArticle.find(".Full_articleImg").attr("src", imgSrc);
+
+    var $allArticles = $(".ArticleContainer");
+    $allArticles.fadeOut(1000);
+    $fullArticle.delay(1000).fadeIn(1000);
+});
+
+$(".returnButton").click(function () {
+    $(".Full_Title").text("");
+    $(".Full_Subtitle").text("");
+    $(".Full_Content").text("");
+    $(".Full_articleImg").attr("src", "");
+
+    var $fullArticle = $(".fullArticleContainer");
+    var $allArticles = $(".ArticleContainer");
+
+    $fullArticle.fadeOut(1000);
+    $allArticles.delay(1000).fadeIn(1000);
+
+
+})
+
 
 
