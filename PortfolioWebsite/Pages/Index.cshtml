@@ -5,9 +5,11 @@
     List<Models.ArticleModel> articles = Model._articles;
 }
 
-<div class="text-center" id="WelcomeHeader">
-    <h1 class="display-4">Welcome</h1>
-    <p>Discover my projects and achievements on this portfolio website, crafted using ASP.NET Razor Pages. Explore my journey, skills, and professional growth through a dynamic and interactive interface.</p>
+<div id="WelcomeHeader">
+    <strong>
+        <span id="Welcome">Welcome</span>
+    </strong>
+    <p id="Intro">@Model.Intro</p>
 </div>
 
 @{

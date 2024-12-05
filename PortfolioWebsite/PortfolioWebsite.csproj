@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\lib\resume\" />
     <Folder Include="wwwroot\lib\static\img\" />
-    <Folder Include="wwwroot\lib\static\" />
   </ItemGroup>
 
   <ItemGroup>
