@@ -36,15 +36,15 @@ body {
 header {
     border-bottom: 5px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, var(--color_2) 0, var(--color_2) 33%, var(--color_4) 33%, var(--color_4) 66%, var(--color_3) 66%, var(--color_3) 100%);
     padding: 10px;
+    border-color: var(--color_4);
 
 }
 
 footer {
     border-top: 5px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, var(--color_2) 0, var(--color_2) 33%, var(--color_4) 33%, var(--color_4) 66%, var(--color_3) 66%, var(--color_3) 100%);
+    border-color: var(--color_4);
     background-color: var(--color_1);
 }
 
@@ -75,11 +75,20 @@ span#headerName_title {
 }
 
 /*Header Navbar*/
+
+ul#MainNavbarList {
+    gap: 15px;
+}
+
+li.nav-item.main {
+    width: 120px;
+}
+
 a.nav-link {
     font-size: 30px;
     color: black;
-    margin-left: 10px;
-    margin-right: 10px;
+    text-align: center;
+    padding: 0px !important;
 }
 
     a.nav-link:hover {
@@ -122,13 +131,14 @@ p.Linebreak {
 
 div#WelcomeHeader {
     font-family: "Cambria",serif;
-    margin: 30px 0;
+    margin: 30px 10%;
+    padding: 0 5%;
 }
 
 span#Welcome {
     font-family: "Cambria",serif;
     font-size: 60px;
-    padding-left: 10px;
+    padding-left: 75px;
 }
 
 p#Intro {
@@ -138,12 +148,12 @@ p#Intro {
 .ArticleContainer {
     justify-content: center;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-flow: dense;
-    gap: 15px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: unset;
+    gap: 30px;
+    margin: 25px 10%;
     opacity: 1;
+    justify-items: center;
 }
 
 .article {
@@ -197,7 +207,7 @@ p#Intro {
 
 .Content {
     flex-grow: 1;
-    max-height: 150px;
+    max-height: 130px;
     margin: 2px;
     padding: 2px;
     display: -webkit-box;
@@ -215,14 +225,15 @@ a.readMore {
     font-weight: 500;
     align-items: center;
     gap: 0.25rem;
-    background-color: #2563EB;
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 10px;
-    position: relative;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
     z-index: 2;
     text-decoration: none;
     background-color: var(--color_4);
@@ -325,6 +336,7 @@ a.readMore {
     }
 
 /*Technical Skills*/
+
 p.TechnicalSkills_ListHeader {
     margin-top: 0in;
     margin-right: 0in;
@@ -655,6 +667,7 @@ span.eduGrad {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px; /* Adjust as necessary */
+    margin: 25px 0px;
 }
 
 .repoHolder {
@@ -741,6 +754,11 @@ p.repo {
 
 form {
     width: 50%;
+    border: 2px solid currentColor;
+    border-color: #323232;
+    box-shadow: 4px 4px #323232;
+    border-radius: 8px;
+    padding: 10px;
 }
 
 td {
@@ -751,12 +769,36 @@ textarea {
     resize: none;
 }
 
-.ContactHeader {
+#ContactHeader {
     text-align: center;
+    margin-top: 30px;
+}
+
+#contactSendButton {
+    color: white;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    background-color: var(--color_4);
+    width: 120px;
+}
+
+tr#contactSendContainer {
+    
 }
 
 /*NewArticleForm*/
-
 /* Form Container */
 #NewArticleForm {
     width: 50%;

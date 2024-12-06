@@ -1,1 +1,3 @@
-Testing txt file
+My name is William Gaechter, I'm a self-taught data analyst, data engineer, and software developer.  I built this website to act as a central hub for all my projects and updates.  It demonstrates how far I've come as a programmer, and works as a canvas for me to practice, add, and tinker with.  
+
+I've written articles below that go into far greater detail of my reflections and experiences in my professional career.  I hope these may help paint the picture of both my growth and aspirations in this field. 
