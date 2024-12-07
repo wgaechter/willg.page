@@ -33,8 +33,8 @@ namespace PortfolioWebsite.Pages
             //Read SMTP settings from AppSettings.json.
             string host = this.Configuration.GetValue<string>("Smtp:Server");
             int port = this.Configuration.GetValue<int>("Smtp:Port");
-            string userName = this.Configuration.GetValue<string>("Smtp:UserName");
-            string password = this.Configuration.GetValue<string>("Smtp:Password");
+            string userName = Environment.GetEnvironmentVariable("SMTP_USER") ?? throw new InvalidOperationException("SMTP Username not found in environment variables.");
+            string password = Environment.GetEnvironmentVariable("SMTP_PASS") ?? throw new InvalidOperationException("SMTP Password not found in environment variables.");
 
             string fromAddress = model.Email;
 

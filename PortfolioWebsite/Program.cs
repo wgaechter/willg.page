@@ -1,7 +1,4 @@
-using Google;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PortfolioWebsite.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,22 +24,25 @@ if (!app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider; 
+    var services = scope.ServiceProvider;
     var dbContext = services.GetRequiredService<SQLiteContext>();
-    var databaseUpdateService = services.GetRequiredService<IDatabaseUpdateService>();
-    
-    await databaseUpdateService.UpdateDB_Projects(); 
-}
 
+    // Ensure database file is created if it doesn't exist
+    var dbPath = configuration.GetConnectionString("DefaultConnection").Split('=')[1];
+    if (!File.Exists(dbPath))
+    {
+        dbContext.Database.EnsureCreated();
+    }
+
+    var databaseUpdateService = services.GetRequiredService<IDatabaseUpdateService>();
+    await databaseUpdateService.UpdateDB_Projects();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapRazorPages();
-
-
 app.Run();
+
