@@ -48,7 +48,7 @@ $(document).ready(function () {
             console.log("Default case: check");
             break;
     }
-})
+});
 
 //Projects Clickable
 $(".repoHolder").click(function () {
@@ -62,8 +62,9 @@ $(".repoHolder").click(function () {
 //Get All articles
 //Shift animate all divs down off screen
 //Shift generated article onto screen with full content w/ return button
-$(".readMore").click(function () {
+$(".readMore").click(function (e) {
     console.log("Read More clicked");
+    e.preventDefault();
     //Variables for article
     var $article = $(this).closest(".article");
     var title = $article.find(".Title").text();
@@ -96,7 +97,18 @@ $(".returnButton").click(function () {
     $allArticles.delay(1000).fadeIn(1000);
 
 
-})
+});
 
-
+let LangMode = 0; //0 for being in US, 1 for being in swiss mode
+$("#swissMode").click(function(e) {
+    if (LangMode == 0) {
+        $("#headerName_text").text("William Joseph Gächter");
+        $(this).find('img').attr('src', "/lib/static/US_flag.svg");
+        LangMode = 1;
+    } else { 
+        $("#headerName_text").text("William Joseph Gaechter");
+        $(this).find('img').attr('src', "/lib/static/Flag_of_Switzerland.svg");
+        LangMode = 0;
+    };
+});
 

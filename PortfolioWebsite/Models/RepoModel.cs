@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata;
 using Microsoft.EntityFrameworkCore;
-using Octokit;
 
 namespace PortfolioWebsite.Models
 {

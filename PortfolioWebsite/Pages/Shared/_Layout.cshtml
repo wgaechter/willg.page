@@ -17,36 +17,37 @@
             <strong>
                 <span id="headerName_text">William Joseph Gaechter</span>
             </strong>
+            <span id ="headerName_title">Data Analyst and Engineer</span>
         </div>
         <!--Linkedin, Github, and Gmail icon.svg links-->
         <nav class="nav navbar-expand justify-content-center" id="IconNavbar">
             <div class="container">
                 <ul class="navbar-nav flex-grow-1 justify-content-center">
                     <li class="nav-item icon" id="Linkedin">
-                        <a href="https://www.linkedin.com/in/williamgaechter/"><img src="~/lib/static/LinkedIn_icon72x72.svg" height="20" width="20" /></a>
+                        <a href="https://www.linkedin.com/in/williamgaechter/" target="_blank"><img src="~/lib/static/LinkedIn_icon72x72.svg" height="20" width="20" /></a>
                     </li>
                     <li class="nav-item icon" id="Github">
-                        <a href="https://github.com/wgaechter"><img src="~/lib/static/github-mark.svg" height="20" width="20" /></a>
+                        <a href="https://github.com/wgaechter" target="_blank"><img src="~/lib/static/github-mark.svg" height="20" width="20" /></a>
                     </li>
-                    <li class="nav-item icon" id="Gmail">
-                        <a href="mailto:will.gaechter@gmail.com"><img src="~/lib/static/Gmail_icon_(2020).svg" height="20" width="20" /></a>
+                    <li class="nav-item icon" id="LeetCode">
+                        <a href="https://leetcode.com/u/wgaechter/" target="_blank"><img src="~/lib/static/leetcode.svg" height="20" width="20" /></a>
                     </li>
                 </ul>
             </div>
         </nav>
         <nav class="nav navbar-expand justify-content-center" id="MainNavbar">
             <div class="container">
-                    <ul class="navbar-nav flex-grow-1 justify-content-center">
-                        <li class="nav-item">
+                <ul class="navbar-nav justify-content-center" id="MainNavbarList">
+                        <li class="nav-item main">
                             <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item main">
                             <a class="nav-link" asp-area="" asp-page="/Resume">Resume</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item main ">
                             <a class="nav-link" asp-area="" asp-page="/Projects">Projects</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item main">
                             <a class="nav-link" asp-area="" asp-page="/Contact">Contact</a>
                         </li>
                     </ul>
@@ -61,7 +62,8 @@
 
     <footer class="footer text-muted">
         <div class="container">
-            &copy; 2024 - William Gaechter - Data Analyst and Enigineer - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2024 - William Gaechter - Data Analyst and Enigineer <a href="#" id="swissMode"><img src="~/lib/static/Flag_of_Switzerland.svg" height="15" width="15" /></a>
+
         </div>
     </footer>
 

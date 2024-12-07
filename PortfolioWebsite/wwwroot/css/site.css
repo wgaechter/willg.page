@@ -1,15 +1,14 @@
 :root {
     --color_1: #fffff0; /*Ivory*/
-    --color_2: #99CC99; /*Green*/
-    --color_3: #CC3333; /*Red*/
-    --color_4: #336699; /*Blue*/
-    --color_5: #009999; /*Turquoise*/
+    --color_2: #DB6C79; /*Pink*/
+    --color_3: #ED4D6E; /*Red*/
+    --color_4: #416788; /*Blue*/
+    --color_5: #7389AE; /*Turquoise*/
 }
 
 html {
     font-size: 14px;
     font-family: Cambria, serif;
-    
 }
 
 @media (min-width: 768px) {
@@ -28,20 +27,24 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
     font-family: Cambria, serif;
-    background: #8e9eab;
-    background: linear-gradient( to top, #8e9eab,#eef2f3 );
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
 }
 
 header {
-    margin-bottom: 30px;
+    border-bottom: 5px solid;
+    border-image-slice: 1;
+    padding: 10px;
+    border-color: var(--color_4);
+
 }
 
 footer {
     border-top: 5px solid;
     border-image-slice: 1;
-    border-image-source: linear-gradient(to right, var(--color_2) 0, var(--color_2) 33%, var(--color_4) 33%, var(--color_4) 66%, var(--color_3) 66%, var(--color_3) 100%);
+    border-color: var(--color_4);
     background-color: var(--color_1);
 }
 
@@ -50,11 +53,8 @@ h1 {
 }
 
 div#headerName_container {
-    margin-top: .25in;
-    margin-right: 1in;
-    margin-bottom: 10px;
-    margin-left: 1in;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 span#headerName_text {
@@ -63,17 +63,32 @@ span#headerName_text {
     font-size: 32px;
     font-family: "Cambria",serif;
     color: black;
-    margin: 0in;
+    margin-top: 10px;
+    margin-bottom: 4px;
     text-align: center;
+    display: block;
+}
+
+span#headerName_title {
+    font-family: "Cambria",serif;
+    display: block;
 }
 
 /*Header Navbar*/
 
+ul#MainNavbarList {
+    gap: 15px;
+}
+
+li.nav-item.main {
+    width: 120px;
+}
+
 a.nav-link {
-   font-size: 30px;
-   color: black;
-   margin-left: 10px;
-   margin-right: 10px;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    padding: 0px !important;
 }
 
     a.nav-link:hover {
@@ -95,10 +110,11 @@ li.nav-item.icon {
     margin-right: 10px;
 }
 
+a#swissMode {
+    margin: 0px 5px;
+}
 
-
-/*Linebreak*/
-
+/*Linebreak DONT TOUCH MIGHT BREAK EVERYTHING */ 
 p.Linebreak {
     margin-top: 0in;
     margin-right: 0in;
@@ -113,14 +129,31 @@ p.Linebreak {
 
 /*Index Page*/
 
+div#WelcomeHeader {
+    font-family: "Cambria",serif;
+    margin: 30px 10%;
+    padding: 0 5%;
+}
+
+span#Welcome {
+    font-family: "Cambria",serif;
+    font-size: 60px;
+    padding-left: 75px;
+}
+
+p#Intro {
+    font-family: "Cambria",serif;
+}
+
 .ArticleContainer {
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    grid-auto-flow: unset;
+    gap: 30px;
+    margin: 25px 10%;
     opacity: 1;
+    justify-items: center;
 }
 
 .article {
@@ -174,7 +207,7 @@ p.Linebreak {
 
 .Content {
     flex-grow: 1;
-    max-height: 150px;
+    max-height: 130px;
     margin: 2px;
     padding: 2px;
     display: -webkit-box;
@@ -192,16 +225,18 @@ a.readMore {
     font-weight: 500;
     align-items: center;
     gap: 0.25rem;
-    background-color: #2563EB;
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 10px;
-    position: relative;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
     z-index: 2;
     text-decoration: none;
+    background-color: var(--color_4);
 }
 
     a.readMore:hover {
@@ -271,13 +306,12 @@ a.readMore {
     width: 100px;
     align-items: center;
     justify-content: center;
-    background-color: #eeeeee4b;
+    background-color: var(--color_2);
     border-radius: 3px;
     letter-spacing: 1px;
     transition: all 0.2s linear;
     cursor: pointer;
     border: none;
-    background: #fff;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -302,6 +336,7 @@ a.readMore {
     }
 
 /*Technical Skills*/
+
 p.TechnicalSkills_ListHeader {
     margin-top: 0in;
     margin-right: 0in;
@@ -632,6 +667,7 @@ span.eduGrad {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px; /* Adjust as necessary */
+    margin: 25px 0px;
 }
 
 .repoHolder {
@@ -718,6 +754,11 @@ p.repo {
 
 form {
     width: 50%;
+    border: 2px solid currentColor;
+    border-color: #323232;
+    box-shadow: 4px 4px #323232;
+    border-radius: 8px;
+    padding: 10px;
 }
 
 td {
@@ -728,12 +769,36 @@ textarea {
     resize: none;
 }
 
-.ContactHeader {
+#ContactHeader {
     text-align: center;
+    margin-top: 30px;
+}
+
+#contactSendButton {
+    color: white;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    background-color: var(--color_4);
+    width: 120px;
+}
+
+tr#contactSendContainer {
+    
 }
 
 /*NewArticleForm*/
-
 /* Form Container */
 #NewArticleForm {
     width: 50%;
