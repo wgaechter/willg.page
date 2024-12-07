@@ -10,7 +10,7 @@ on:
 env:
   PROJECT_LOCATION: PortfolioWebsite/PortfolioWebsite.csproj
   ELASTIC_BEANSTALK_NAME: willg.info
-  ELASTIC_BEANSTALK_ENV_NAME: Willginfo-env
+  ELASTIC_BEANSTALK_ENV_NAME: willg-info-prod
 
 jobs:
   build:
