@@ -27,8 +27,6 @@
 name: Deploy to Amazon ECS
 
 on:
-  push:
-    branches: [ "master" ]
   workflow_dispatch:
 
 env:
@@ -39,7 +37,7 @@ env:
   ECS_TASK_DEFINITION: portfolio-website-container-service-revision.json   # set this to the path to your Amazon ECS task definition
                                                                               # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: portfolio                           # set this to the name of the container in the
-                                                              # containerDefinitions section of your task definition
+                                                      # containerDefinitions section of your task definition
 
 permissions:
   contents: read
