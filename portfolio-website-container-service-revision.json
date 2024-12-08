@@ -1,11 +1,11 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:833803470104:task-definition/portfolio-website-container-service:7",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:833803470104:task-definition/portfolio-website-container-service:9",
     "containerDefinitions": [
         {
             "name": "portfolio",
-            "image": "833803470104.dkr.ecr.us-east-1.amazonaws.com/github-actions/portfolio-website:a21923ac235f9a1ab7f88ce3d70ff40fe39c8767",
+            "image": "833803470104.dkr.ecr.us-east-1.amazonaws.com/github-actions/portfolio-website:30c93db0ab082fbbfa4a21d4a38bf38e011db785",
             "cpu": 0,
-            "memory": 30720,
+            "memory": 6144,
             "memoryReservation": 5120,
             "portMappings": [],
             "essential": true,
@@ -24,7 +24,7 @@
     "family": "portfolio-website-container-service",
     "executionRoleArn": "arn:aws:iam::833803470104:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 7,
+    "revision": 9,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -49,18 +49,19 @@
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
-        "EC2"
+        "FARGATE"
     ],
     "cpu": "1024",
-    "memory": "30720",
+    "memory": "6144",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-12-08T22:17:40.012Z",
+    "registeredAt": "2024-12-08T23:20:03.140Z",
     "registeredBy": "arn:aws:iam::833803470104:user/wgaechter",
     "tags": []
 }
