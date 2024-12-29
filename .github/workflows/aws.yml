@@ -5,7 +5,7 @@ on:
 
 env:
   PROJECT_LOCATION: PortfolioWebsite/PortfolioWebsite.csproj
-  ELASTIC_BEANSTALK_NAME: will.info
+  ELASTIC_BEANSTALK_NAME: willg.info
   ELASTIC_BEANSTALK_ENV_NAME: portfolio-env
 
 jobs:
