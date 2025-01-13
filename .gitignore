@@ -367,3 +367,9 @@ FodyWeavers.xsd
 /PortfolioWebsite/willg.page.db
 /PortfolioWebsite/.env
 /PortfolioWebsite/willg.page.db
+/PortfolioWebsite/wwwroot/lib/static/img/*
+/PortfolioWebsite/wwwroot/lib/static/img/BigTenBest.heic
+/PortfolioWebsite/wwwroot/lib/static/img/IMG_3204.JPEG
+/PortfolioWebsite/wwwroot/lib/static/img/IMG_3293.JPEG
+/PortfolioWebsite/wwwroot/lib/static/img/modern football.webp
+/PortfolioWebsite/wwwroot/lib/static/img/Rockets.jpeg
